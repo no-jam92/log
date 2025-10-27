@@ -11,10 +11,14 @@
             "id": "5a25b3c3e990deac",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Jotai에서 상태를 읽고 쓰는 방법.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Jotai에서 상태를 읽고 쓰는 방법"
             }
           }
         ]
@@ -166,11 +170,11 @@
   },
   "active": "5a25b3c3e990deac",
   "lastOpenFiles": [
+    "Jotai에서 상태를 읽고 쓰는 방법.md",
+    "INDEX.md",
+    "테스트.md",
     "Test/테스트 3.md",
     "Test/테스트 4.md",
-    "테스트.md",
-    "테스트2.md",
-    "INDEX.md",
     "Test",
     "Untitled.md",
     "Welcome.md"
