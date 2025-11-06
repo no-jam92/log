@@ -11,10 +11,14 @@
             "id": "b52261956f02df82",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "2025 Javascript 툴체인 현황.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "2025 Javascript 툴체인 현황"
             }
           }
         ]
@@ -164,8 +168,9 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "10f2dcb0b1151563",
+  "active": "b52261956f02df82",
   "lastOpenFiles": [
+    "2025 Javascript 툴체인 현황.md",
     "비동기 리엑트.md",
     "Jotai에서 상태를 읽고 쓰는 방법.md",
     "INDEX.md",
