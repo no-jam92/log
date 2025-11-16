@@ -10,9 +10,12 @@
     "postProcess": true,
     "displayProgress": true,
     "inlineHTML": false,
-    "exportPath": "/Users/j5fx4hqmp6/Workspace/jaemin/no-jam-log",
+    "exportPath": "/Users/j5fx4hqmp6/Workspace/jaemin/no-jam-log/public",
     "filesToExport": [
-      "all"
+      "2025 Javascript 툴체인 현황.md",
+      "비동기 리엑트.md",
+      "INDEX.md",
+      "Jotai에서 상태를 읽고 쓰는 방법.md"
     ],
     "useFallbackRenderer": false,
     "addBodyClasses": true,
