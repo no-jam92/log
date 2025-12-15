@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ceaaec9e19bceefc",
+        "id": "7749f6f95ed8d5bb",
         "type": "tabs",
         "children": [
           {
-            "id": "6448dff5e3bfda5a",
+            "id": "8df65648e1293a81",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -164,14 +164,14 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "6448dff5e3bfda5a",
+  "active": "8df65648e1293a81",
   "lastOpenFiles": [
-    "Archives/Untitled.md",
-    "Untitled",
     "Jotai에서 상태를 읽고 쓰는 방법.md",
     "INDEX.md",
     "비동기 리엑트.md",
     "2025 Javascript 툴체인 현황.md",
+    "Archives/Untitled.md",
+    "Untitled",
     "Archives",
     "무제 폴더",
     "Archives",
