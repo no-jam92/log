@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0c0a5a9e965c3185",
+        "id": "0b9183d5342bb3cc",
         "type": "tabs",
         "children": [
           {
-            "id": "9eef15ce3ce2b7f8",
+            "id": "4686229908690fbe",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -176,7 +176,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "9eef15ce3ce2b7f8",
+  "active": "4686229908690fbe",
   "lastOpenFiles": [
     "no-jam-log/Archives/Untitled.md",
     "no-jam-log/Archives",
