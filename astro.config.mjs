@@ -1,11 +1,13 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import svelte from '@astrojs/svelte';
+import svelte from "@astrojs/svelte";
 
-import sitemap from '@astrojs/sitemap';
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte(), sitemap()]
+  site: "https://no-jam92.github.io",
+  base: "/log",
+  integrations: [svelte(), sitemap()],
 });
