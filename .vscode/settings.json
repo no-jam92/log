@@ -1,0 +1,6 @@
+{
+	"svelte.language-server.runtime": "node",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.biome": "explicit"
+	}
+}
