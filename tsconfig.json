@@ -1,5 +1,11 @@
 {
 	"extends": "astro/tsconfigs/strict",
 	"include": [".astro/types.d.ts", "**/*.astro", "**/*.svelte"],
-	"exclude": ["dist"]
+	"exclude": ["dist"],
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@style/*": ["./styled-system/*"]
+		}
+	}
 }
