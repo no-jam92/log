@@ -1,5 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import YearGroup from '../components/YearGroup.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts', ({ data }) => data.lang === 'ko' && !data.draft);
+allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const grouped = new Map<number, typeof allPosts>();
+for (const post of allPosts) {
+  const year = post.data.date.getFullYear();
+  const list = grouped.get(year) ?? [];
+  list.push(post);
+  grouped.set(year, list);
+}
+const years = Array.from(grouped.keys()).sort((a, b) => b - a);
+const latestYear = years[0];
 ---
 
 <BaseLayout title="조용한 서재" current="home">
@@ -8,8 +23,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="label">QUIET STUDY · POSTS</p>
       <h1>글</h1>
       <p class="slogan"><em>A collection of thoughts, studies, and notes</em></p>
+      <p class="count">총 {allPosts.length}편의 기록</p>
     </header>
-    <p class="empty">아직 작성된 글이 없습니다. 곧 추가될 예정입니다.</p>
+
+    {allPosts.length === 0 ? (
+      <p class="empty">아직 작성된 글이 없습니다.</p>
+    ) : (
+      years.map((year) => (
+        <YearGroup year={year} posts={grouped.get(year)!} open={year === latestYear} />
+      ))
+    )}
   </div>
 </BaseLayout>
 
@@ -19,7 +42,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 auto;
     padding: 0 var(--margin-sm);
   }
-  .hero { margin-bottom: var(--section-gap); }
+  .hero {
+    margin-bottom: var(--section-gap);
+  }
   .label {
     font-family: var(--label-family);
     font-size: var(--label-size);
@@ -46,11 +71,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-style: var(--slogan-italic-style);
     font-size: var(--slogan-italic-size);
     color: var(--on-surface-variant);
+    margin-bottom: var(--space-2);
+  }
+  .count {
+    font-family: var(--meta-family);
+    font-size: var(--meta-size);
+    color: var(--on-surface-variant);
   }
   .empty {
     padding: var(--section-gap) 0;
     text-align: center;
     color: var(--on-surface-variant);
-    border-top: var(--border-hairline) solid var(--outline-variant);
   }
 </style>

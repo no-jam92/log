@@ -1,0 +1,25 @@
+---
+import styles from './YearGroup.module.css';
+import PostCard from './PostCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  year: number;
+  posts: CollectionEntry<'posts'>[];
+  open?: boolean;
+}
+
+const { year, posts, open = false } = Astro.props;
+---
+
+<details class={styles.group} open={open}>
+  <summary class={styles.summary}>
+    <span class={styles.year}>{year}</span>
+    <span class={styles.count}>{posts.length} POSTS</span>
+  </summary>
+  <ul class={styles.list}>
+    {posts.map((post) => (
+      <li><PostCard post={post} /></li>
+    ))}
+  </ul>
+</details>

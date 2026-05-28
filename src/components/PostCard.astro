@@ -1,0 +1,30 @@
+---
+import styles from './PostCard.module.css';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { title, date, category, excerpt, lang } = post.data;
+
+const slug = post.id.replace(/^(ko|en)\//, '');
+const href = lang === 'ko' ? `/posts/${slug}` : `/en/posts/${slug}`;
+
+const formattedDate = new Intl.DateTimeFormat(lang === 'ko' ? 'ko-KR' : 'en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
+---
+
+<a class={styles.card} href={href}>
+  <div class={styles.meta}>
+    <time datetime={date.toISOString()}>{formattedDate}</time>
+    <span class={styles.dot} aria-hidden="true"></span>
+    <span class={styles.category}>{category}</span>
+  </div>
+  <h3 class={styles.title}>{title}</h3>
+  <p class={styles.excerpt}>{excerpt}</p>
+</a>
