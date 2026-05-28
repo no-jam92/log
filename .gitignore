@@ -28,3 +28,4 @@ pnpm-debug.log*
 
 # 토큰 검증용 스크린샷 (verification artifacts)
 /tokens-smoke-test*.png
+.gstack/
