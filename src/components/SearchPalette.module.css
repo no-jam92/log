@@ -1,0 +1,60 @@
+.dialog {
+  width: min(640px, 92vw);
+  max-height: 80vh;
+  padding: 0;
+  background: var(--surface);
+  color: var(--on-surface);
+  border: var(--border-hairline) solid var(--outline-variant);
+  margin: 10vh auto;
+}
+
+.dialog::backdrop {
+  background: color-mix(in oklab, var(--background) 70%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--gutter);
+  border-bottom: var(--border-hairline) solid var(--outline-variant);
+}
+
+.title {
+  font-family: var(--label-family);
+  font-size: var(--label-size);
+  font-weight: var(--label-weight);
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+.close {
+  font-family: var(--meta-family);
+  font-size: var(--meta-size);
+  color: var(--on-surface-variant);
+  padding: 2px 6px;
+  border: var(--border-hairline) solid var(--outline-variant);
+  transition: color var(--transition-base);
+}
+.close:hover { color: var(--on-surface); }
+
+.body {
+  padding: var(--gutter);
+  overflow-y: auto;
+  max-height: calc(80vh - 60px);
+}
+
+/* Pagefind default UI tone override (light/dark 자동 따름) */
+.body :global(.pagefind-ui) {
+  --pagefind-ui-primary: var(--primary);
+  --pagefind-ui-text: var(--on-surface);
+  --pagefind-ui-background: var(--surface);
+  --pagefind-ui-border: var(--outline-variant);
+  --pagefind-ui-tag: var(--surface-container);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 0;
+  --pagefind-ui-font: var(--body-family);
+}

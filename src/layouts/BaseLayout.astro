@@ -3,6 +3,7 @@ import '../styles/tokens.css';
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import SearchPalette from '../components/SearchPalette.astro';
 import { site } from '../config/site';
 
 interface Props {
@@ -57,5 +58,6 @@ const {
       <slot />
     </main>
     <SiteFooter />
+    <SearchPalette />
   </body>
 </html>

@@ -1,0 +1,95 @@
+---
+import styles from './SearchPalette.module.css';
+import { getLang, t } from '../i18n/utils';
+
+const lang = getLang(Astro.url);
+const strings = t(lang);
+---
+
+<dialog class={styles.dialog} data-search-dialog aria-label={strings.nav.searchLabel}>
+  <div class={styles.header}>
+    <span class={styles.title}>{strings.nav.searchLabel}</span>
+    <button class={styles.close} type="button" data-search-close>ESC</button>
+  </div>
+  <div class={styles.body}>
+    <div id="pagefind-search"></div>
+  </div>
+</dialog>
+
+<script>
+  let initialized = false;
+
+  function getDialog(): HTMLDialogElement | null {
+    return document.querySelector<HTMLDialogElement>('[data-search-dialog]');
+  }
+
+  function loadScript(src: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error(`Failed to load ${src}`));
+      document.head.appendChild(script);
+    });
+  }
+
+  async function ensurePagefindUI() {
+    if (initialized) return;
+    initialized = true;
+    try {
+      // 빌드 후 dist/pagefind/* 에 생성되는 default UI 로드
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '/pagefind/pagefind-ui.css';
+      document.head.appendChild(link);
+      await loadScript('/pagefind/pagefind-ui.js');
+      // @ts-ignore — Pagefind UI 가 window.PagefindUI 를 노출
+      new window.PagefindUI({ element: '#pagefind-search', showSubResults: true, resetStyles: false });
+    } catch (_e) {
+      const target = document.getElementById('pagefind-search');
+      if (target) {
+        target.innerHTML = '<p style="font-family: var(--meta-family); color: var(--on-surface-variant); padding: 24px; text-align: center;">검색 인덱스가 아직 빌드되지 않았습니다.<br/>(pnpm build 실행 후 preview 에서 동작)</p>';
+      }
+    }
+  }
+
+  function openDialog() {
+    const dialog = getDialog();
+    if (!dialog) return;
+    if (!dialog.open) dialog.showModal();
+    ensurePagefindUI();
+  }
+
+  function closeDialog() {
+    const dialog = getDialog();
+    if (dialog?.open) dialog.close();
+  }
+
+  // ⌘K / Ctrl+K 글로벌 단축키
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      openDialog();
+    }
+  });
+
+  // 헤더의 search 버튼 → 모달 열기
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('[data-search-open]')) openDialog();
+    if (target.closest('[data-search-close]')) closeDialog();
+  });
+
+  // 백드롭 클릭 → 닫기
+  getDialog()?.addEventListener('click', (e) => {
+    const dialog = getDialog();
+    if (!dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    const inside =
+      e.clientX >= rect.left &&
+      e.clientX <= rect.right &&
+      e.clientY >= rect.top &&
+      e.clientY <= rect.bottom;
+    if (!inside) closeDialog();
+  });
+</script>
