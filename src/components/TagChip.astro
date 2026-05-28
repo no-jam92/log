@@ -1,0 +1,15 @@
+---
+import styles from './TagChip.module.css';
+
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+{tags.length > 0 && (
+  <ul class={styles.list} aria-label="태그">
+    {tags.map((tag) => <li class={styles.chip}>{tag}</li>)}
+  </ul>
+)}

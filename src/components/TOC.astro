@@ -1,0 +1,63 @@
+---
+import styles from './TOC.module.css';
+
+export type Heading = {
+  slug: string;
+  text: string;
+  depth: number;
+};
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const items = headings.filter((h) => h.depth === 2);
+---
+
+{items.length > 0 && (
+  <aside class={styles.toc} aria-label="목차">
+    <p class={styles.label}>한 글의 목차</p>
+    <ul class={styles.list}>
+      {items.map((h) => (
+        <li>
+          <a class={styles.link} href={`#${h.slug}`} data-toc-link={h.slug}>{h.text}</a>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}
+
+<script>
+  /**
+   * 본문 h2 가 뷰포트에 들어오면 해당 TOC 링크에 aria-current="true" 표시.
+   */
+  const links = document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]');
+  if (links.length > 0) {
+    const headingMap = new Map<string, HTMLAnchorElement>();
+    links.forEach((link) => {
+      const slug = link.dataset.tocLink;
+      if (slug) headingMap.set(slug, link);
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const slug = entry.target.id;
+          const link = headingMap.get(slug);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            links.forEach((l) => l.removeAttribute('aria-current'));
+            link.setAttribute('aria-current', 'true');
+          }
+        });
+      },
+      { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+    );
+
+    headingMap.forEach((_, slug) => {
+      const target = document.getElementById(slug);
+      if (target) observer.observe(target);
+    });
+  }
+</script>

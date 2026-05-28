@@ -1,0 +1,48 @@
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  margin-top: var(--section-gap);
+  padding-top: var(--margin-md);
+  border-top: var(--border-hairline) solid var(--outline-variant);
+}
+
+@media (max-width: 640px) {
+  .nav { grid-template-columns: 1fr; }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--gutter);
+  border: var(--border-hairline) solid var(--outline-variant);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+.card:hover {
+  transform: translateY(var(--lift-offset));
+  border-color: var(--on-surface-variant);
+}
+
+.next { text-align: right; }
+
+.label {
+  font-family: var(--label-family);
+  font-size: var(--label-size);
+  font-weight: var(--label-weight);
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+.title {
+  font-family: var(--post-title-family);
+  font-size: var(--post-title-size);
+  font-weight: var(--post-title-weight);
+  line-height: var(--post-title-leading);
+  color: var(--on-surface);
+}
+
+.placeholder {
+  /* 한 쪽이 없을 때 그리드 자리 유지 */
+}

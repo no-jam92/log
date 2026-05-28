@@ -1,0 +1,107 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProseLayout from '../../layouts/ProseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PrevNextNav from '../../components/PrevNextNav.astro';
+import AuthorCard from '../../components/AuthorCard.astro';
+import TagChip from '../../components/TagChip.astro';
+import TOC from '../../components/TOC.astro';
+
+export async function getStaticPaths() {
+  const koPosts = await getCollection('posts', ({ data }) => data.lang === 'ko' && !data.draft);
+  koPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return koPosts.map((post, i) => ({
+    params: { slug: post.id.replace(/^ko\//, '') },
+    props: {
+      post,
+      prev: koPosts[i + 1], // older
+      next: koPosts[i - 1], // newer
+    },
+  }));
+}
+
+const { post, prev, next } = Astro.props;
+const { Content, headings } = await render(post);
+const { title, date, category, tags, excerpt } = post.data;
+
+const formattedDate = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
+---
+
+<BaseLayout title={`${title} · 조용한 서재`} description={excerpt}>
+  <div class="layout">
+    <article class="main">
+      <Breadcrumb items={[{ label: '글', href: '/' }, { label: category }]} />
+
+      <header class="header">
+        <h1>{title}</h1>
+        <div class="meta">
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+        </div>
+        <TagChip tags={tags} />
+      </header>
+
+      <ProseLayout>
+        <Content />
+      </ProseLayout>
+
+      <AuthorCard />
+      <PrevNextNav prev={prev} next={next} />
+    </article>
+
+    <TOC headings={headings} />
+  </div>
+</BaseLayout>
+
+<style>
+  .layout {
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    padding: 0 var(--margin-sm);
+  }
+
+  @media (min-width: 1100px) {
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, var(--max-width-article)) 200px;
+      gap: var(--section-gap);
+      max-width: calc(var(--max-width-article) + 200px + var(--section-gap));
+      justify-content: center;
+    }
+  }
+
+  .main {
+    max-width: var(--max-width-article);
+    margin: 0 auto;
+  }
+
+  .header {
+    margin-bottom: var(--margin-md);
+    padding-bottom: var(--margin-md);
+    border-bottom: var(--border-hairline) solid var(--outline-variant);
+  }
+
+  h1 {
+    font-family: var(--h1-family);
+    font-size: var(--h1-mobile-size);
+    font-weight: var(--h1-weight);
+    line-height: var(--h1-leading);
+    letter-spacing: var(--h1-tracking);
+    margin-bottom: var(--space-3);
+  }
+  @media (min-width: 640px) {
+    h1 { font-size: var(--h1-size); }
+  }
+
+  .meta {
+    font-family: var(--meta-family);
+    font-size: var(--meta-size);
+    color: var(--on-surface-variant);
+    margin-bottom: var(--space-3);
+  }
+</style>

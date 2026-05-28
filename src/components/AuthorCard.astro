@@ -1,0 +1,15 @@
+---
+import styles from './AuthorCard.module.css';
+import { site } from '../config/site';
+---
+
+<aside class={styles.card}>
+  <p class={styles.label}>WRITTEN BY</p>
+  <p class={styles.name}>{site.author.name}</p>
+  <p class={styles.slogan}><em>{site.author.slogan}</em></p>
+  <ul class={styles.social}>
+    {site.author.social.map((s) => (
+      <li><a class={styles.link} href={s.href}>{s.label} ↗</a></li>
+    ))}
+  </ul>
+</aside>
