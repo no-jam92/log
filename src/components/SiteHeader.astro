@@ -1,0 +1,35 @@
+---
+import styles from './SiteHeader.module.css';
+
+interface Props {
+  /** 현재 활성 메뉴 키 — aria-current 표시에 사용 */
+  current?: 'home' | 'about';
+}
+
+const { current } = Astro.props;
+---
+
+<header class={styles.header}>
+  <div class={styles.inner}>
+    <a class={styles.logo} href="/" aria-label="조용한 서재 홈">ID</a>
+    <nav class={styles.nav} aria-label="주 메뉴">
+      <a
+        class={styles.navLink}
+        href="/"
+        aria-current={current === 'home' ? 'page' : undefined}
+      >
+        홈
+      </a>
+      <a
+        class={styles.navLink}
+        href="/about"
+        aria-current={current === 'about' ? 'page' : undefined}
+      >
+        소개
+      </a>
+      <button class={styles.searchTrigger} type="button" aria-label="검색 (⌘K)">
+        ⌘K
+      </button>
+    </nav>
+  </div>
+</header>

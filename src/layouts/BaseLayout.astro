@@ -1,0 +1,58 @@
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'ko' | 'en';
+  /** SiteHeader 의 aria-current 표시용 */
+  current?: 'home' | 'about';
+}
+
+const {
+  title,
+  description = '조용한 서재 — 깊은 몰입을 위한 에디토리얼 블로그',
+  lang = 'ko',
+  current,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    {/* FOUC 방지: 본문 페인트 전에 사용자가 토글한 테마를 적용 */}
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.dataset.theme = t;
+          }
+        } catch (_) { /* localStorage 차단 환경 무시 */ }
+      })();
+    </script>
+
+    {/* 폰트: Pretendard / Newsreader / JetBrains Mono — Google Fonts CDN */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,400&family=Pretendard:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body>
+    <SiteHeader current={current} />
+    <main class="page">
+      <slot />
+    </main>
+  </body>
+</html>
