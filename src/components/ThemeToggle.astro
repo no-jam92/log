@@ -1,0 +1,37 @@
+---
+import styles from './ThemeToggle.module.css';
+---
+
+<button
+  class={styles.toggle}
+  type="button"
+  data-theme-toggle
+  aria-label="테마 전환 (라이트 / 다크)"
+>
+  <span class={styles.iconSun} aria-hidden="true">☼</span>
+  <span class={styles.iconMoon} aria-hidden="true">☾</span>
+</button>
+
+<script>
+  /**
+   * 토글 동작: 현재 effective theme(데이터 속성 우선, 없으면 OS prefer)을 반전.
+   * - 명시적 'light' | 'dark' 만 localStorage 에 저장 (system 으로 되돌리려면 키 삭제)
+   */
+  function getEffectiveTheme(): 'light' | 'dark' {
+    const explicit = document.documentElement.dataset.theme;
+    if (explicit === 'light' || explicit === 'dark') return explicit;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(next: 'light' | 'dark') {
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (_) { /* noop */ }
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const next = getEffectiveTheme() === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+  });
+</script>

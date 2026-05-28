@@ -2,6 +2,8 @@
 import '../styles/tokens.css';
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { site } from '../config/site';
 
 interface Props {
   title: string;
@@ -13,7 +15,7 @@ interface Props {
 
 const {
   title,
-  description = '조용한 서재 — 깊은 몰입을 위한 에디토리얼 블로그',
+  description = site.description,
   lang = 'ko',
   current,
 } = Astro.props;
@@ -54,5 +56,6 @@ const {
     <main class="page">
       <slot />
     </main>
+    <SiteFooter />
   </body>
 </html>

@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout title={`소개 · ${site.name}`} current="about">
+  <article class="container">
+    <header class="hero">
+      <p class="label">ABOUT</p>
+      <h1>{site.author.name}</h1>
+      <p class="slogan"><em>{site.author.slogan}</em></p>
+    </header>
+
+    <section class="bio">
+      <p>{site.author.bio}</p>
+    </section>
+
+    <section class="skills">
+      <h2 class="sectionLabel">기술 스택</h2>
+      <ul class="skillList">
+        {site.author.skills.map((skill) => <li class="skillTag">{skill}</li>)}
+      </ul>
+    </section>
+
+    <section class="contact">
+      <h2 class="sectionLabel">연락</h2>
+      <ul class="socialList">
+        {site.author.social.map((s) => (
+          <li><a class="socialLink" href={s.href}>{s.label} <span aria-hidden="true">↗</span></a></li>
+        ))}
+      </ul>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    padding: 0 var(--margin-sm);
+  }
+
+  .hero {
+    margin-bottom: var(--section-gap);
+    padding-bottom: var(--margin-md);
+    border-bottom: var(--border-hairline) solid var(--outline-variant);
+  }
+
+  .label {
+    font-family: var(--label-family);
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    line-height: var(--label-leading);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    margin-bottom: var(--space-3);
+  }
+
+  h1 {
+    font-family: var(--h1-family);
+    font-size: var(--h1-mobile-size);
+    font-weight: var(--h1-weight);
+    line-height: var(--h1-leading);
+    letter-spacing: var(--h1-tracking);
+    margin-bottom: var(--space-3);
+  }
+  @media (min-width: 640px) {
+    h1 { font-size: var(--h1-size); }
+  }
+
+  .slogan {
+    font-family: var(--slogan-italic-family);
+    font-style: var(--slogan-italic-style);
+    font-size: var(--slogan-italic-size);
+    color: var(--on-surface-variant);
+  }
+
+  .bio {
+    margin-bottom: var(--section-gap);
+    font-size: var(--body-size);
+    line-height: var(--body-leading);
+  }
+
+  .sectionLabel {
+    font-family: var(--label-family);
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    margin-bottom: var(--space-3);
+  }
+
+  .skills, .contact {
+    margin-bottom: var(--section-gap);
+  }
+
+  .skillList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .skillTag {
+    font-family: var(--meta-family);
+    font-size: var(--meta-size);
+    color: var(--on-surface-variant);
+    padding: 4px 10px;
+    border: var(--border-hairline) solid var(--outline-variant);
+  }
+
+  .socialList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .socialLink {
+    font-family: var(--body-family);
+    font-size: var(--body-size);
+    color: var(--on-surface);
+    border-bottom: var(--border-hairline) solid transparent;
+    transition: border-color var(--transition-base);
+  }
+  .socialLink:hover {
+    border-bottom-color: var(--primary);
+  }
+</style>

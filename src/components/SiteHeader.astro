@@ -1,5 +1,7 @@
 ---
 import styles from './SiteHeader.module.css';
+import ThemeToggle from './ThemeToggle.astro';
+import { site } from '../config/site';
 
 interface Props {
   /** 현재 활성 메뉴 키 — aria-current 표시에 사용 */
@@ -11,7 +13,7 @@ const { current } = Astro.props;
 
 <header class={styles.header}>
   <div class={styles.inner}>
-    <a class={styles.logo} href="/" aria-label="조용한 서재 홈">ID</a>
+    <a class={styles.logo} href="/" aria-label={`${site.name} 홈`}>{site.logoMark}</a>
     <nav class={styles.nav} aria-label="주 메뉴">
       <a
         class={styles.navLink}
@@ -30,6 +32,7 @@ const { current } = Astro.props;
       <button class={styles.searchTrigger} type="button" aria-label="검색 (⌘K)">
         ⌘K
       </button>
+      <ThemeToggle />
     </nav>
   </div>
 </header>

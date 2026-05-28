@@ -1,0 +1,18 @@
+---
+import styles from './SiteFooter.module.css';
+import { site } from '../config/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class={styles.footer}>
+  <div class={styles.inner}>
+    <p class={styles.copy}>© {year} {site.author.name}</p>
+    <nav class={styles.links} aria-label="사이트 푸터">
+      {site.author.social.map((s) => (
+        <a class={styles.link} href={s.href}>{s.label}</a>
+      ))}
+    </nav>
+    <span class={styles.build}>Build · {site.build}</span>
+  </div>
+</footer>
