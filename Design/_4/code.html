@@ -1,0 +1,252 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>소개 - ID</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:ital,wght@1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#1b1c1c",
+                        "primary-fixed": "#bceddb",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container": "#f0eded",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary": "#5d322a",
+                        "secondary-container": "#e1dfdf",
+                        "on-primary-fixed": "#002018",
+                        "on-secondary-fixed-variant": "#464747",
+                        "outline": "#717975",
+                        "tertiary-container": "#784840",
+                        "primary-fixed-dim": "#a0d1bf",
+                        "surface": "#fcf9f8",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary": "#154538",
+                        "on-primary-fixed-variant": "#204f41",
+                        "inverse-primary": "#a0d1bf",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-fixed-dim": "#f7b7ac",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#fbbaaf",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-tertiary-fixed": "#33110b",
+                        "on-surface-variant": "#404945",
+                        "tertiary-fixed": "#ffdad4",
+                        "surface-tint": "#396758",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#1c1b1b",
+                        "outline-variant": "#c0c8c4",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-error-container": "#93000a",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#2f5d4f",
+                        "on-tertiary-fixed-variant": "#683a33",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#a3d4c2",
+                        "on-secondary-container": "#626262",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-bright": "#fcf9f8",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "background": "#fcf9f8",
+                        "on-surface": "#1c1b1b",
+                        "error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "section-gap": "64px",
+                        "margin-sm": "16px",
+                        "margin-md": "32px",
+                        "gutter": "24px",
+                        "side-rail-breakpoint": "1100px",
+                        "max-width-content": "760px"
+                    },
+                    fontFamily: {
+                        "slogan-italic": ["Newsreader", "serif"],
+                        "h1": ["Pretendard", "sans-serif"],
+                        "body": ["Pretendard", "sans-serif"],
+                        "meta": ["JetBrains Mono", "monospace"],
+                        "h2": ["Pretendard", "sans-serif"],
+                        "h1-mobile": ["Pretendard", "sans-serif"],
+                        "post-title": ["Pretendard", "sans-serif"],
+                        "label": ["JetBrains Mono", "monospace"]
+                    },
+                    fontSize: {
+                        "slogan-italic": ["20px", { fontWeight: "400", fontStyle: "italic" }],
+                        "h1": ["48px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body": ["16px", { lineHeight: "1.75", fontWeight: "400" }],
+                        "meta": ["13px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "h2": ["28px", { lineHeight: "1.3", fontWeight: "700" }],
+                        "h1-mobile": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "post-title": ["20px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "label": ["12px", { lineHeight: "1", letterSpacing: "0.12em", fontWeight: "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Fallback font family if Pretendard isn't loaded locally */
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar (Shared Component) -->
+<nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md font-body text-body fixed top-0 w-full z-50 border-b border-outline-variant dark:border-on-surface-variant/20 flat no shadows">
+<div class="flex justify-between items-center h-16 max-w-[760px] mx-auto px-margin-sm md:px-0">
+<!-- Brand -->
+<div class="font-h2 text-h2 font-bold text-on-surface dark:text-on-surface cursor-pointer active:scale-95 transition-all hover:bg-surface-container-low dark:hover:bg-surface-container-highest duration-200 p-2 rounded-md">
+                ID
+            </div>
+<!-- Links (Mobile context usually hides top nav links, but per instructions, we render the shell. Let's keep it clean) -->
+<div class="flex items-center gap-6">
+<!-- Inactive -->
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant cursor-pointer transition-all active:scale-95" href="#">홈</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant cursor-pointer transition-all active:scale-95" href="#">글</a>
+<!-- Active -->
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b border-primary dark:border-primary-fixed-dim pb-1 cursor-pointer transition-all active:scale-95" href="#">소개</a>
+<!-- Search Trigger -->
+<button class="text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant cursor-pointer transition-all active:scale-95 font-meta">⌘K</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-[760px] mx-auto px-margin-sm md:px-0 pt-32 pb-section-gap flex flex-col gap-section-gap">
+<!-- Profile Section -->
+<section class="flex flex-col gap-6">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center font-h2 text-h2 text-primary">
+                ID
+            </div>
+<div>
+<h1 class="font-h1-mobile text-h1-mobile text-on-surface mb-2">홍길동</h1>
+<p class="font-slogan-italic text-slogan-italic text-secondary">Crafting quiet, resilient digital experiences.</p>
+</div>
+<p class="font-body text-body text-on-surface-variant mt-4 max-w-lg">
+                디지털 프로덕트를 설계하고 개발합니다. 복잡한 문제를 단순하고 우아한 인터페이스로 해결하는 것에 관심이 많습니다. 현재는 인디 개발자로 활동하며 미니멀한 웹 경험을 연구하고 있습니다.
+            </p>
+</section>
+<!-- Divider -->
+<div class="w-full h-px bg-outline-variant/50"></div>
+<!-- Experience Timeline -->
+<section class="flex flex-col gap-margin-md">
+<h2 class="font-h2 text-h2 text-on-surface">경력</h2>
+<div class="flex flex-col gap-6 border-l border-outline-variant/40 ml-2 pl-6">
+<!-- Item 1 -->
+<div class="relative flex flex-col gap-1 group">
+<div class="absolute -left-[29px] top-[6px] w-2 h-2 rounded-full bg-primary ring-4 ring-surface"></div>
+<span class="font-meta text-meta text-secondary mb-1">2021 — 현재</span>
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors">독립 개발자</h3>
+<p class="font-body text-body text-on-surface-variant">자체 서비스 설계 및 개발, 오픈소스 프로젝트 유지보수.</p>
+</div>
+<!-- Item 2 -->
+<div class="relative flex flex-col gap-1 group mt-2">
+<div class="absolute -left-[29px] top-[6px] w-2 h-2 rounded-full bg-outline-variant ring-4 ring-surface group-hover:bg-primary transition-colors"></div>
+<span class="font-meta text-meta text-secondary mb-1">2018 — 2021</span>
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors">시니어 프론트엔드 엔지니어</h3>
+<p class="font-body text-body text-on-surface-variant">Tech Startup Corp. 디자인 시스템 구축 및 코어 웹 성능 최적화 담당.</p>
+</div>
+<!-- Item 3 -->
+<div class="relative flex flex-col gap-1 group mt-2">
+<div class="absolute -left-[29px] top-[6px] w-2 h-2 rounded-full bg-outline-variant ring-4 ring-surface group-hover:bg-primary transition-colors"></div>
+<span class="font-meta text-meta text-secondary mb-1">2015 — 2018</span>
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors">UI/UX 디자이너</h3>
+<p class="font-body text-body text-on-surface-variant">Design Agency Inc. 엔터프라이즈 솔루션 사용성 개선 및 프로토타이핑.</p>
+</div>
+</div>
+</section>
+<!-- Divider -->
+<div class="w-full h-px bg-outline-variant/50"></div>
+<!-- Projects -->
+<section class="flex flex-col gap-margin-md">
+<h2 class="font-h2 text-h2 text-on-surface">프로젝트</h2>
+<div class="flex flex-col gap-4">
+<!-- Project Card 1 -->
+<a class="block p-5 border border-outline-variant/50 rounded-lg hover:border-primary/30 hover:bg-surface-container-lowest transition-all group" href="#">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors border-b border-transparent group-hover:border-primary">Minimalist Reader</h3>
+<span class="material-symbols-outlined text-secondary text-sm">north_east</span>
+</div>
+<p class="font-body text-body text-on-surface-variant mb-4">텍스트에만 집중할 수 있는 브라우저 확장 프로그램. 월간 활성 사용자 1만 명 달성.</p>
+<div class="flex gap-3">
+<span class="font-meta text-meta text-secondary">TypeScript</span>
+<span class="font-meta text-meta text-secondary">React</span>
+</div>
+</a>
+<!-- Project Card 2 -->
+<a class="block p-5 border border-outline-variant/50 rounded-lg hover:border-primary/30 hover:bg-surface-container-lowest transition-all group" href="#">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors border-b border-transparent group-hover:border-primary">Quiet CSS</h3>
+<span class="material-symbols-outlined text-secondary text-sm">north_east</span>
+</div>
+<p class="font-body text-body text-on-surface-variant mb-4">가벼운 용량과 높은 가독성을 목표로 한 클래스리스 CSS 프레임워크.</p>
+<div class="flex gap-3">
+<span class="font-meta text-meta text-secondary">CSS</span>
+<span class="font-meta text-meta text-secondary">Design System</span>
+</div>
+</a>
+</div>
+</section>
+<!-- Divider -->
+<div class="w-full h-px bg-outline-variant/50"></div>
+<!-- Skills -->
+<section class="flex flex-col gap-margin-md">
+<h2 class="font-h2 text-h2 text-on-surface">기술 스택</h2>
+<div class="flex flex-wrap gap-2">
+<span class="font-meta text-meta text-on-surface-variant px-3 py-1.5 border border-outline-variant/60 rounded-full bg-surface-container-lowest">JavaScript / TypeScript</span>
+<span class="font-meta text-meta text-on-surface-variant px-3 py-1.5 border border-outline-variant/60 rounded-full bg-surface-container-lowest">React &amp; Next.js</span>
+<span class="font-meta text-meta text-on-surface-variant px-3 py-1.5 border border-outline-variant/60 rounded-full bg-surface-container-lowest">Tailwind CSS</span>
+<span class="font-meta text-meta text-on-surface-variant px-3 py-1.5 border border-outline-variant/60 rounded-full bg-surface-container-lowest">Figma</span>
+<span class="font-meta text-meta text-on-surface-variant px-3 py-1.5 border border-outline-variant/60 rounded-full bg-surface-container-lowest">Design Systems</span>
+<span class="font-meta text-meta text-on-surface-variant px-3 py-1.5 border border-outline-variant/60 rounded-full bg-surface-container-lowest">Web Accessibility</span>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface dark:bg-surface-dim font-meta text-meta w-full py-12 mt-section-gap border-t border-outline-variant dark:border-on-surface-variant/20 flat no shadows text-secondary dark:text-secondary-fixed-dim">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-[760px] mx-auto px-margin-sm md:px-0 gap-4">
+<!-- Brand / Logo -->
+<div class="font-label text-label uppercase tracking-widest text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">
+                ID
+            </div>
+<!-- Copyright -->
+<div>
+                © 2024 Indie Developer. All rights reserved.
+            </div>
+<!-- Links -->
+<div class="flex gap-4">
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Build v1.0.4</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">RSS Feed</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">GitHub</a>
+</div>
+</div>
+</footer>
+</body></html>

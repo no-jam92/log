@@ -1,0 +1,307 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>리액트 컴포넌트 설계의 최소주의 - 조용한 서재</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:ital,wght@1,400&amp;display=swap" rel="stylesheet">
+<link as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-primary-fixed-variant": "#204f41",
+                        "surface-variant": "#e5e2e1",
+                        "on-primary-fixed": "#002018",
+                        "background": "#fcf9f8",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#f7b7ac",
+                        "primary-fixed": "#bceddb",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#626262",
+                        "tertiary-container": "#784840",
+                        "secondary": "#5e5e5e",
+                        "outline": "#717975",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-container": "#fbbaaf",
+                        "tertiary": "#5d322a",
+                        "secondary-container": "#e1dfdf",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary-container": "#a3d4c2",
+                        "surface-tint": "#396758",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-background": "#1c1b1b",
+                        "primary": "#154538",
+                        "primary-container": "#2f5d4f",
+                        "on-tertiary-fixed": "#33110b",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary-fixed-variant": "#683a33",
+                        "secondary-fixed": "#e4e2e2",
+                        "primary-fixed-dim": "#a0d1bf",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-secondary-fixed-variant": "#464747",
+                        "inverse-primary": "#a0d1bf",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-surface": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#404945",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c0c8c4",
+                        "surface-container": "#f0eded",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "64px",
+                        "margin-md": "32px",
+                        "margin-sm": "16px",
+                        "max-width-content": "760px",
+                        "gutter": "24px",
+                        "side-rail-breakpoint": "1100px"
+                    },
+                    "fontFamily": {
+                        "slogan-italic": ["newsreader"],
+                        "post-title": ["Pretendard"],
+                        "meta": ["jetbrainsMono"],
+                        "h1": ["Pretendard"],
+                        "label": ["jetbrainsMono"],
+                        "h1-mobile": ["Pretendard"],
+                        "h2": ["Pretendard"],
+                        "body": ["Pretendard"]
+                    },
+                    "fontSize": {
+                        "slogan-italic": ["20px", { "fontWeight": "400" }],
+                        "post-title": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "meta": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label": ["12px", { "lineHeight": "1", "letterSpacing": "0.12em", "fontWeight": "500" }],
+                        "h1-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "h2": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body": ["16px", { "lineHeight": "1.75", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body font-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant dark:border-on-surface-variant/20">
+<div class="flex justify-between items-center h-16 max-w-[760px] mx-auto px-margin-sm md:px-0">
+<a class="font-h2 text-h2 font-bold text-on-surface dark:text-on-surface tracking-tight" href="#">ID</a>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant font-body text-body transition-colors duration-200 cursor-pointer active:scale-95" href="#">홈</a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b border-primary dark:border-primary-fixed-dim pb-1 font-body text-body cursor-pointer active:scale-95" href="#">글</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant font-body text-body transition-colors duration-200 cursor-pointer active:scale-95" href="#">소개</a>
+<button class="text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200 p-2 rounded flex items-center justify-center cursor-pointer active:scale-95">
+<span class="font-meta text-meta">⌘K</span>
+</button>
+</div>
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-secondary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Layout -->
+<main class="flex-grow pt-[104px] pb-section-gap relative max-w-[1100px] mx-auto w-full px-margin-sm md:px-0 flex justify-center">
+<!-- Center Column (Article) -->
+<article class="max-w-[680px] w-full">
+<!-- Article Header -->
+<header class="mb-12">
+<div class="font-meta text-meta text-secondary mb-4 flex items-center gap-2">
+<a class="hover:text-on-surface transition-colors" href="#">글</a>
+<span class="text-outline-variant">/</span>
+<a class="hover:text-on-surface transition-colors" href="#">개발</a>
+<span class="text-outline-variant">/</span>
+</div>
+<h1 class="font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-on-surface mb-6">리액트 컴포넌트 설계의 최소주의</h1>
+<div class="flex flex-wrap items-center gap-4 font-meta text-meta text-secondary pb-6 border-b border-outline-variant/50">
+<div class="flex items-center gap-2">
+<img alt="작성자 프로필" class="w-6 h-6 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfBPSqUaPOaZHOH3Li17ohEGDYn3BGUPQPgicaEUyKImukKiMCoV60rAW4Mx-Cci6vxvHebg3wOSYDzBUro4QZlVv56WlIZS4R7z-iGeuY0kPFAEO2Us4BJzumww8KrjJGDRtsrlLX9NvAi5GSf6RxWrJBG0DtxEUu6-h0Mht332A2jZhFNys01zgHKf7KukeSYIqSvqFO3tQxK9XXlcjVL0kTQOqBQHKN-nJOA5MWL0q04OQ4j_44XPYClaaC6F14l_52bO7SLvPL">
+<span class="text-on-surface-variant font-medium">조용한 개발자</span>
+</div>
+<span class="text-outline-variant">•</span>
+<time datetime="2023-10-24">2023. 10. 24.</time>
+<span class="text-outline-variant">•</span>
+<span>읽기 7분</span>
+</div>
+</header>
+<!-- Article Content -->
+<div class="prose prose-neutral max-w-none prose-p:text-[17px] prose-p:leading-[1.8] prose-p:text-on-surface prose-headings:text-on-surface prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-on-surface prose-strong:font-medium">
+<p class="mb-6">
+                    복잡한 프론트엔드 애플리케이션을 개발하다 보면 컴포넌트가 점점 비대해지는 것을 목격하게 됩니다. 상태 관리는 얽히고, 렌더링 최적화는 산으로 가며, 결국 하나의 파일을 열었을 때 수백 줄의 코드가 우리를 압도합니다. 이 글에서는 최소주의적 접근을 통해 어떻게 리액트 컴포넌트를 본연의 목적에 맞게 작고 단단하게 유지할 수 있는지 탐구해 봅니다.
+                </p>
+<h2 class="font-h2 text-h2 mt-12 mb-6">왜 이 글을 쓰게 되었나</h2>
+<p class="mb-6">
+                    최근 진행했던 대규모 리팩토링 프로젝트에서 가장 큰 병목은 '모든 것을 다 하는' 거대 컴포넌트들이었습니다. 데이터 페칭, 복잡한 비즈니스 로직, 세밀한 UI 조작이 하나의 함수 안에 혼재되어 있었죠. 우리는 코드를 읽는 시간을 줄이고, 변경에 유연하게 대처할 수 있는 구조가 필요했습니다.
+                </p>
+<blockquote class="border-l-2 border-primary pl-6 my-8 italic font-body text-[17px] text-on-surface-variant">
+                    "완벽함이란 더 이상 보탤 것이 없을 때가 아니라, 더 이상 뺄 것이 없을 때 달성된다." <br>
+<span class="text-sm not-italic mt-2 block text-secondary">— 앙투안 드 생텍쥐페리</span>
+</blockquote>
+<h3 class="text-[22px] font-bold mt-10 mb-4">컴포넌트의 책임 분리</h3>
+<p class="mb-6">
+                    최소주의 설계의 첫 걸음은 관심사의 분리(Separation of Concerns)입니다. UI 컴포넌트는 오직 <strong>어떻게 보일 것인가</strong>에 집중해야 합니다. 데이터가 어디서 오는지, 상태가 어떻게 변하는지 알 필요가 없습니다.
+                </p>
+<!-- Code Block -->
+<div class="my-8 rounded-DEFAULT border border-outline-variant overflow-hidden bg-surface-container-lowest">
+<div class="flex items-center px-4 py-2 bg-surface-container-low border-b border-outline-variant font-meta text-label text-secondary">
+<span>UserProfile.tsx</span>
+</div>
+<div class="p-4 overflow-x-auto">
+<pre class="font-meta text-meta text-on-surface-variant"><code>// Bad: 데이터 페칭과 UI 렌더링이 결합됨
+function UserProfile({ userId }) {
+  const { data, loading } = useQuery(`/api/users/${userId}`);
+  
+  if (loading) return &lt;Spinner /&gt;;
+  
+  return (
+    &lt;div className="profile-card"&gt;
+      &lt;h1&gt;{data.name}&lt;/h1&gt;
+      &lt;p&gt;{data.bio}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Good: UI 렌더링에만 집중
+function UserProfileCard({ name, bio }) {
+  return (
+    &lt;div className="profile-card"&gt;
+      &lt;h1&gt;{name}&lt;/h1&gt;
+      &lt;p&gt;{bio}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+</div>
+</div>
+<p class="mb-6">
+                    위 예시처럼 데이터를 주입받는 단순한 프레젠테이셔널 컴포넌트를 만들면, 테스트하기 쉽고 재사용성이 높아집니다. 디자인 시스템의 핵심은 이러한 순수 컴포넌트들의 집합을 구축하는 것입니다.
+                </p>
+<!-- Embedded Image -->
+<figure class="my-10">
+<img alt="A sleek, modern desk setup featuring a MacBook displaying lines of code. The lighting is soft and natural, casting gentle shadows across a minimalist, light wood desk surface. A small potted plant and a notebook rest nearby, contributing to a calm, focused, and intellectual 'Digital Study' atmosphere. The aesthetic relies on warm whites, subtle grays, and clean lines." class="w-full h-auto rounded border border-outline-variant shadow-sm object-cover aspect-[16/9]" data-alt="A sleek, modern desk setup featuring a MacBook displaying lines of code. The lighting is soft and natural, casting gentle shadows across a minimalist, light wood desk surface. A small potted plant and a notebook rest nearby, contributing to a calm, focused, and intellectual 'Digital Study' atmosphere. The aesthetic relies on warm whites, subtle grays, and clean lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDAOQdqKgHIsuFjEZLthtCu1BGT33fGw77K2qS0CEE45-9mUnqaSA8Z2eQVFFtk_9hk3vUghMc1_aWl_V3M6KHxxhExvSnHn65EiLYUESN6cEFaGDPrnNJ3iQK1tZAF8lAl8Lyg9VxpVFz-D3oPqhh6GcBCNVDp4SbuZGMfWzX-UgnWu5l0rdEjkjq0vNdaU6UKiMLmea3UBbP7kios8Czwj7TMyQ6lrEpjtlEYb96OltjXjemtPMiNE2zfy2iRKVLN5DeWFwiMX8I">
+<figcaption class="mt-3 text-center font-meta text-label text-secondary">
+                        단순함은 복잡함을 다루는 가장 우아한 방법입니다.
+                    </figcaption>
+</figure>
+</div>
+<!-- Tags & Share -->
+<div class="mt-16 pt-8 border-t border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-low text-secondary font-meta text-label rounded border border-outline-variant/30 hover:bg-surface-container-highest transition-colors cursor-pointer">React</span>
+<span class="px-3 py-1 bg-surface-container-low text-secondary font-meta text-label rounded border border-outline-variant/30 hover:bg-surface-container-highest transition-colors cursor-pointer">Architecture</span>
+<span class="px-3 py-1 bg-surface-container-low text-secondary font-meta text-label rounded border border-outline-variant/30 hover:bg-surface-container-highest transition-colors cursor-pointer">Minimalism</span>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" title="링크 복사">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" title="X 공유">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.964H5.078z"></path></svg>
+</button>
+</div>
+</div>
+<!-- Post Navigation Cards -->
+<div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<a class="group block p-6 border border-outline-variant rounded bg-surface hover:bg-surface-container-lowest transition-all hover:-translate-y-0.5" href="#">
+<div class="font-meta text-label text-secondary mb-2 flex items-center gap-1 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                        이전 글
+                    </div>
+<div class="font-post-title text-post-title text-on-surface group-hover:underline decoration-1 underline-offset-4 decoration-primary">
+                        타입스크립트 유틸리티 타입 활용기
+                    </div>
+</a>
+<a class="group block p-6 border border-outline-variant rounded bg-surface hover:bg-surface-container-lowest transition-all hover:-translate-y-0.5 text-right" href="#">
+<div class="font-meta text-label text-secondary mb-2 flex items-center justify-end gap-1 group-hover:text-primary transition-colors">
+                        다음 글
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+<div class="font-post-title text-post-title text-on-surface group-hover:underline decoration-1 underline-offset-4 decoration-primary">
+                        상태 관리 라이브러리의 진화
+                    </div>
+</a>
+</div>
+<!-- Comments Section (Giscus Placeholder) -->
+<div class="mt-16">
+<h3 class="font-h2 text-[20px] mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">chat_bubble_outline</span>
+                    댓글
+                </h3>
+<div class="border border-outline-variant rounded p-4 bg-surface-container-lowest shadow-sm">
+<div class="flex gap-4 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-grow">
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary p-0 pb-2 text-body font-body text-on-surface placeholder-outline resize-none" placeholder="이 글에 대한 생각을 남겨주세요..." rows="2"></textarea>
+</div>
+</div>
+<div class="flex justify-end">
+<button class="px-4 py-2 bg-primary-container text-on-primary font-meta text-label rounded hover:opacity-90 transition-opacity">댓글 작성</button>
+</div>
+</div>
+<div class="mt-8 text-center font-meta text-meta text-secondary py-12 border border-dashed border-outline-variant rounded">
+                    Giscus 댓글 영역
+                </div>
+</div>
+</article>
+<!-- Right Side Rail (Table of Contents) - Only visible on wide screens -->
+<aside class="hidden xl:block w-[240px] shrink-0 ml-16 relative">
+<div class="sticky top-[104px]">
+<h4 class="font-meta text-label text-secondary mb-4 uppercase tracking-widest border-b border-outline-variant/30 pb-2">이 글의 목차</h4>
+<ul class="space-y-3 font-body text-[14px]">
+<li>
+<a class="text-on-surface hover:text-primary transition-colors hover:translate-x-1 inline-block" href="#">왜 이 글을 쓰게 되었나</a>
+</li>
+<li class="pl-4">
+<a class="text-secondary hover:text-primary transition-colors hover:translate-x-1 inline-block" href="#">컴포넌트의 책임 분리</a>
+</li>
+</ul>
+<div class="mt-12 pt-6 border-t border-outline-variant/30">
+<button class="flex items-center gap-2 text-secondary hover:text-on-surface transition-colors font-meta text-meta" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+                        맨 위로
+                    </button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-section-gap border-t border-outline-variant dark:border-on-surface-variant/20 bg-surface dark:bg-surface-dim">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-[760px] mx-auto px-margin-sm md:px-0 gap-4">
+<div class="font-label text-label uppercase tracking-widest text-on-surface-variant">
+                © 2024 Indie Developer. All rights reserved.
+            </div>
+<div class="flex space-x-6 font-meta text-meta">
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">Build v1.0.4</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">RSS Feed</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">GitHub</a>
+</div>
+</div>
+</footer>
+</body></html>

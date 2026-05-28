@@ -1,0 +1,294 @@
+<!DOCTYPE html><html class="dark" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>조용한 서재 - 글 상세</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,400&amp;family=Pretendard:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-primary-fixed-variant": "#204f41",
+                        "surface-variant": "#e5e2e1",
+                        "on-primary-fixed": "#002018",
+                        "background": "#14140F", // Override for dark mode requirement
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface": "#1C1C18", // Override for dark mode requirement
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#f7b7ac",
+                        "primary-fixed": "#bceddb",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#626262",
+                        "tertiary-container": "#784840",
+                        "secondary": "#5e5e5e",
+                        "outline": "#717975",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-container": "#fbbaaf",
+                        "tertiary": "#5d322a",
+                        "secondary-container": "#e1dfdf",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary-container": "#a3d4c2",
+                        "surface-tint": "#396758",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-low": "#1C1C18",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-background": "#ECEAE3", // Override for dark mode requirement
+                        "primary": "#8FBFA7", // Override for dark mode requirement
+                        "primary-container": "#2f5d4f",
+                        "on-tertiary-fixed": "#33110b",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary-fixed-variant": "#683a33",
+                        "secondary-fixed": "#e4e2e2",
+                        "primary-fixed-dim": "#8FBFA7",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-secondary-fixed-variant": "#464747",
+                        "inverse-primary": "#a0d1bf",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-surface": "#ECEAE3",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#a0a0a0",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#404040",
+                        "surface-container": "#1C1C18",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "64px",
+                        "margin-md": "32px",
+                        "margin-sm": "16px",
+                        "max-width-content": "680px", // Adjusted for this specific page requirement
+                        "gutter": "24px",
+                        "side-rail-breakpoint": "1100px"
+                    },
+                    "fontFamily": {
+                        "slogan-italic": ["Newsreader", "serif"],
+                        "post-title": ["Pretendard", "sans-serif"],
+                        "meta": ["JetBrains Mono", "monospace"],
+                        "h1": ["Pretendard", "sans-serif"],
+                        "label": ["JetBrains Mono", "monospace"],
+                        "h1-mobile": ["Pretendard", "sans-serif"],
+                        "h2": ["Pretendard", "sans-serif"],
+                        "body": ["Pretendard", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "slogan-italic": ["20px", { "fontWeight": "400" }],
+                        "post-title": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "meta": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label": ["12px", { "lineHeight": "1", "letterSpacing": "0.12em", "fontWeight": "500" }],
+                        "h1-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "h2": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body": ["16px", { "lineHeight": "1.75", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+        body {
+            background-color: #14140F;
+            color: #ECEAE3;
+            font-family: 'Pretendard', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary/30 min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav aria-label="Main Navigation" class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant dark:border-on-surface-variant/20 flat no shadows">
+<div class="flex justify-between items-center h-16 max-w-[760px] mx-auto px-margin-sm md:px-0">
+<a class="font-h2 text-h2 font-bold text-on-surface dark:text-on-surface transition-opacity hover:opacity-80" href="#">ID</a>
+<div class="flex gap-6 items-center">
+<a class="font-body text-body text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant cursor-pointer transition-all active:scale-95" href="#">홈</a>
+<a aria-current="page" class="font-body text-body text-primary dark:text-primary-fixed-dim font-bold border-b border-primary dark:border-primary-fixed-dim pb-1 cursor-pointer transition-all active:scale-95" href="#">글</a>
+<a class="font-body text-body text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant cursor-pointer transition-all active:scale-95" href="#">소개</a>
+<button class="font-body text-body text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant cursor-pointer transition-all active:scale-95 ml-2 flex items-center gap-1 border border-outline-variant rounded px-2 py-0.5 text-sm opacity-70">
+<span class="material-symbols-outlined text-[16px]">search</span> ⌘K
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-32 pb-section-gap relative">
+<div class="max-w-max-width-content mx-auto px-margin-sm md:px-0">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="font-meta text-meta text-on-surface-variant mb-6 flex items-center gap-2">
+<a class="hover:text-primary transition-colors" href="#">글</a>
+<span>/</span>
+<a class="hover:text-primary transition-colors" href="#">개발</a>
+<span>/</span>
+</nav>
+<!-- Article Header -->
+<header class="mb-12">
+<h1 class="font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-on-surface mb-6 leading-tight">효율적인 상태 관리를 위한 아키텍처 패턴</h1>
+<div class="flex flex-wrap items-center gap-4 border-b border-outline-variant pb-6 mb-8">
+<div class="font-meta text-meta text-on-surface-variant">2024. 10. 24</div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="font-meta text-meta text-on-surface-variant">12 min read</div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex gap-2">
+<span class="font-label text-label text-primary bg-primary/10 px-2 py-1 rounded">ARCHITECTURE</span>
+<span class="font-label text-label text-primary bg-primary/10 px-2 py-1 rounded">REACT</span>
+</div>
+</div>
+</header>
+<!-- Article Body -->
+<article class="font-body text-body text-on-background space-y-8">
+<p class="text-lg leading-relaxed text-on-surface-variant">
+                    프론트엔드 애플리케이션의 규모가 커짐에 따라 상태 관리는 가장 복잡하고 다루기 어려운 문제가 되었습니다. 이 글에서는 단방향 데이터 흐름을 유지하면서도 도메인 로직을 효과적으로 분리하는 방법에 대해 깊이 있게 탐구해 봅니다.
+                </p>
+<h2 class="font-h2 text-h2 text-on-surface mt-12 mb-6">문제의 시작</h2>
+<p>
+                    우리는 종종 컴포넌트 내부에 상태와 비즈니스 로직을 혼재해서 작성하곤 합니다. 초기에는 개발 속도가 빠르고 직관적이기 때문에 이 방식이 선호됩니다. 하지만 요구사항이 복잡해지고 여러 컴포넌트에서 같은 상태를 공유해야 하는 순간, 프롭스 드릴링(Props Drilling)과 예기치 않은 사이드 이펙트의 늪에 빠지게 됩니다.
+                </p>
+<!-- Blockquote -->
+<blockquote class="border-l-2 border-primary pl-6 py-2 my-8 italic text-on-surface-variant bg-surface/50 p-4 rounded-r-lg">
+                    "복잡성은 소프트웨어 개발의 근본적인 한계다. 우리는 복잡성을 완전히 제거할 수 없지만, 아키텍처를 통해 그것을 국소화하고 격리할 수는 있다."
+                </blockquote>
+<p>
+                    이러한 문제를 해결하기 위해 도입된 다양한 전역 상태 관리 라이브러리들(Redux, MobX, Zustand 등)은 각자의 철학을 가지고 있습니다. 그러나 도구의 선택보다 중요한 것은 상태를 '어떻게' 분류하고 설계할 것인가에 대한 원칙입니다.
+                </p>
+<h2 class="font-h2 text-h2 text-on-surface mt-12 mb-6">상태의 분류</h2>
+<p>효율적인 관리를 위해 우리는 애플리케이션의 상태를 크게 세 가지로 분류해야 합니다.</p>
+<ul class="list-disc pl-6 space-y-3 mt-4 text-on-surface-variant">
+<li><strong class="text-on-surface">UI 상태:</strong> 모달의 열림/닫힘, 드롭다운의 활성화 등 특정 컴포넌트나 뷰의 렌더링에만 관여하는 일회성 상태입니다.</li>
+<li><strong class="text-on-surface">서버 상태:</strong> API 요청을 통해 가져온 데이터로, 클라이언트가 아닌 서버가 원본(Source of Truth)을 소유합니다. 비동기적이며 캐싱이 필요합니다.</li>
+<li><strong class="text-on-surface">클라이언트 상태:</strong> 브라우저 세션 동안 유지되어야 하는 사용자 설정, 폼 입력 데이터, 장바구니 등 클라이언트가 소유권을 가지는 전역 상태입니다.</li>
+</ul>
+<!-- Code Block -->
+<div class="my-10 rounded-lg overflow-hidden border border-outline-variant bg-[#0d0d0a]">
+<div class="flex items-center px-4 py-2 border-b border-outline-variant/50 bg-[#161612]">
+<span class="font-meta text-meta text-on-surface-variant">store/useAuthStore.ts</span>
+</div>
+<pre class="p-6 overflow-x-auto"><code class="font-meta text-meta text-[#c5c8c6]">
+<span class="text-[#b5bd68]">import</span> { create } <span class="text-[#b5bd68]">from</span> <span class="text-[#8abeb7]">'zustand'</span>;
+
+<span class="text-[#b294bb]">interface</span> <span class="text-[#f0c674]">AuthState</span> {
+  user: User | <span class="text-[#81a2be]">null</span>;
+  isAuthenticated: <span class="text-[#81a2be]">boolean</span>;
+  login: (user: User) =&gt; <span class="text-[#81a2be]">void</span>;
+  logout: () =&gt; <span class="text-[#81a2be]">void</span>;
+}
+
+<span class="text-[#b5bd68]">export const</span> useAuthStore = create&lt;<span class="text-[#f0c674]">AuthState</span>&gt;((set) =&gt; ({
+  user: <span class="text-[#81a2be]">null</span>,
+  isAuthenticated: <span class="text-[#81a2be]">false</span>,
+  login: (user) =&gt; set({ user, isAuthenticated: <span class="text-[#81a2be]">true</span> }),
+  logout: () =&gt; set({ user: <span class="text-[#81a2be]">null</span>, isAuthenticated: <span class="text-[#81a2be]">false</span> }),
+}));
+                    </code></pre>
+</div>
+<p>
+                    위 코드는 Zustand를 활용한 간단한 클라이언트 상태 관리의 예시입니다. 보일러플레이트가 적고 직관적인 API 덕분에 최근 많은 주목을 받고 있습니다. 중요한 점은 도메인별로 스토어를 분리하여 관심사를 명확히 했다는 것입니다.
+                </p>
+<!-- Image with Caption -->
+<figure class="my-12">
+<div class="w-full h-80 bg-surface border border-outline-variant flex items-center justify-center relative overflow-hidden" data-alt="A highly abstract, dark-mode architectural diagram showing data flow. The image features sleek, glowing green nodes connected by thin white lines against a deep charcoal background. The style is modern, technical, and minimalist, emphasizing clean geometric precision and a calm, intellectual atmosphere. The lighting is subtle, with only the data paths softly illuminated." style="background-image: linear-gradient(to bottom right, #1C1C18, #2a3b32);">
+</div>
+<figcaption class="mt-4 text-center font-meta text-meta text-on-surface-variant">단방향 데이터 흐름과 도메인 분리 아키텍처 다이어그램</figcaption>
+</figure>
+<h2 class="font-h2 text-h2 text-on-surface mt-12 mb-6">결론</h2>
+<p>
+                    완벽한 아키텍처란 존재하지 않습니다. 프로젝트의 규모, 팀의 숙련도, 그리고 비즈니스 요구사항에 따라 적절한 도구와 패턴을 선택하는 안목이 필요할 뿐입니다. 다만, 상태의 소유권과 생명주기를 명확히 정의하는 것에서부터 건강한 코드베이스가 시작된다는 점을 잊지 말아야 합니다.
+                </p>
+</article>
+<!-- Tags & Share -->
+<div class="mt-16 pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex gap-2">
+<span class="font-label text-label border border-outline-variant px-3 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface hover:border-primary transition-colors cursor-pointer">#Architecture</span>
+<span class="font-label text-label border border-outline-variant px-3 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface hover:border-primary transition-colors cursor-pointer">#React</span>
+<span class="font-label text-label border border-outline-variant px-3 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface hover:border-primary transition-colors cursor-pointer">#StateManagement</span>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full bg-surface border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Author info -->
+<div class="mt-12 p-6 bg-surface border border-outline-variant rounded flex items-start gap-4">
+<div class="w-12 h-12 rounded bg-surface-variant flex-shrink-0"></div>
+<div>
+<h3 class="font-post-title text-post-title text-on-surface">Indie Developer</h3>
+<p class="font-meta text-meta text-on-surface-variant mt-1">조용하게 코드를 짜고, 생각의 조각들을 글로 남깁니다. 미니멀리즘과 타이포그래피에 관심이 많습니다.</p>
+</div>
+</div>
+<!-- Navigation Cards -->
+<div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-4">
+<a class="p-6 border border-outline-variant bg-surface hover:-translate-y-1 transition-transform duration-300 block group" href="#">
+<div class="font-meta text-meta text-on-surface-variant mb-2 group-hover:text-primary transition-colors">← 이전 글</div>
+<div class="font-post-title text-post-title text-on-surface group-hover:underline decoration-1 underline-offset-4">커스텀 훅으로 비즈니스 로직 분리하기</div>
+</a>
+<a class="p-6 border border-outline-variant bg-surface hover:-translate-y-1 transition-transform duration-300 block group text-right" href="#">
+<div class="font-meta text-meta text-on-surface-variant mb-2 group-hover:text-primary transition-colors">다음 글 →</div>
+<div class="font-post-title text-post-title text-on-surface group-hover:underline decoration-1 underline-offset-4">디자인 시스템의 타이포그래피 토큰 설계</div>
+</a>
+</div>
+<!-- Comments Section -->
+<section class="mt-24">
+<h3 class="font-h2 text-h2 text-on-surface mb-8">댓글 <span class="text-on-surface-variant text-lg">0</span></h3>
+<div class="border border-outline-variant bg-surface p-4 rounded focus-within:border-primary transition-colors">
+<textarea class="w-full bg-transparent border-none text-on-surface placeholder:text-on-surface-variant font-body text-body resize-none focus:ring-0 p-0" placeholder="이 글에 대한 생각이나 의견을 남겨주세요." rows="3"></textarea>
+<div class="flex justify-end mt-4 pt-4 border-t border-outline-variant/50">
+<button class="bg-primary text-[#000000] font-label text-label px-6 py-2 rounded font-bold hover:opacity-90 transition-opacity">
+                            댓글 작성
+                        </button>
+</div>
+</div>
+<div class="mt-8 text-center py-12 text-on-surface-variant font-meta text-meta border-t border-outline-variant/30">
+                    아직 작성된 댓글이 없습니다. 첫 번째 댓글을 남겨보세요.
+                </div>
+</section>
+</div>
+<!-- Desktop Side Rail Table of Contents -->
+<aside class="hidden lg:block fixed top-32 w-64 text-sm" style="left: calc(50% + 380px);">
+<div class="pl-8 border-l border-outline-variant/50 sticky top-32">
+<h4 class="font-label text-label text-on-surface-variant mb-4 uppercase tracking-widest">이 글의 목차</h4>
+<ul class="space-y-3 font-meta text-meta">
+<li><a class="text-primary hover:text-primary transition-colors" href="#">문제의 시작</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">상태의 분류</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">결론</a></li>
+</ul>
+<button class="mt-8 flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors font-meta text-meta border border-outline-variant px-3 py-1.5 rounded">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span> Top
+                </button>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer aria-label="Site Footer" class="w-full py-12 mt-section-gap bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-on-surface-variant/20 flat no shadows">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-[760px] mx-auto px-margin-sm md:px-0 gap-4">
+<div class="font-label text-label uppercase tracking-widest text-on-surface-variant">© 2024 Indie Developer. All rights reserved.</div>
+<nav aria-label="Footer Navigation" class="flex gap-6 font-meta text-meta text-secondary dark:text-secondary-fixed-dim">
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">Build v1.0.4</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">RSS Feed</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">GitHub</a>
+</nav>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>조용한 서재 - 글 상세 (모바일)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&amp;family=jetbrainsMono:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-primary-fixed-variant": "#204f41",
+                        "surface-variant": "#e5e2e1",
+                        "on-primary-fixed": "#002018",
+                        "background": "#fcf9f8",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#f7b7ac",
+                        "primary-fixed": "#bceddb",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#626262",
+                        "tertiary-container": "#784840",
+                        "secondary": "#5e5e5e",
+                        "outline": "#717975",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-container": "#fbbaaf",
+                        "tertiary": "#5d322a",
+                        "secondary-container": "#e1dfdf",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary-container": "#a3d4c2",
+                        "surface-tint": "#396758",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-background": "#1c1b1b",
+                        "primary": "#154538",
+                        "primary-container": "#2f5d4f",
+                        "on-tertiary-fixed": "#33110b",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary-fixed-variant": "#683a33",
+                        "secondary-fixed": "#e4e2e2",
+                        "primary-fixed-dim": "#a0d1bf",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-secondary-fixed-variant": "#464747",
+                        "inverse-primary": "#a0d1bf",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-surface": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#404945",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c0c8c4",
+                        "surface-container": "#f0eded",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "64px",
+                        "margin-md": "32px",
+                        "margin-sm": "16px",
+                        "max-width-content": "760px",
+                        "gutter": "24px",
+                        "side-rail-breakpoint": "1100px"
+                    },
+                    "fontFamily": {
+                        "slogan-italic": ["newsreader"],
+                        "post-title": ["Pretendard"],
+                        "meta": ["jetbrainsMono"],
+                        "h1": ["Pretendard"],
+                        "label": ["jetbrainsMono"],
+                        "h1-mobile": ["Pretendard"],
+                        "h2": ["Pretendard"],
+                        "body": ["Pretendard"]
+                    },
+                    "fontSize": {
+                        "slogan-italic": ["20px", { "fontWeight": "400" }],
+                        "post-title": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "meta": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label": ["12px", { "lineHeight": "1", "letterSpacing": "0.12em", "fontWeight": "500" }],
+                        "h1-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "h2": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body": ["16px", { "lineHeight": "1.75", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #fcf9f8;
+            color: #1c1b1b;
+            max-width: 390px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+        }
+        .prose-custom img {
+            width: 100%;
+            height: auto;
+            margin: 2rem 0;
+        }
+        .prose-custom pre {
+            background-color: #ffffff;
+            border: 1px solid #e5e2e1;
+            padding: 1rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="font-body text-body bg-background">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md font-body text-body fixed top-0 w-full z-50 border-b border-outline-variant dark:border-on-surface-variant/20 flat no shadows flex justify-between items-center h-16 max-w-[760px] mx-auto px-margin-sm md:px-0">
+<a class="font-h2 text-h2 font-bold text-on-surface dark:text-on-surface" href="#">ID</a>
+<div class="flex gap-4">
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer transition-all active:scale-95 px-2 py-1" href="#">홈</a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b border-primary dark:border-primary-fixed-dim pb-1 hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer transition-all active:scale-95 px-2" href="#">글</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer transition-all active:scale-95 px-2 py-1" href="#">소개</a>
+<button class="hidden md:block text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant px-2 py-1">⌘K</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-[100px] px-margin-sm pb-section-gap">
+<!-- Post Header -->
+<header class="mb-8">
+<h1 class="font-h1-mobile text-h1-mobile text-on-surface mb-4">디지털 환경에서의 몰입을 위한 최소주의 디자인</h1>
+<div class="flex flex-col gap-2 font-meta text-meta text-secondary">
+<span>2024년 5월 12일</span>
+<span>태그: UX 디자인, 미니멀리즘</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant mt-6"></div>
+</header>
+<!-- Post Body -->
+<article class="prose-custom font-body text-body text-on-surface-variant">
+<p>
+                현대의 소프트웨어는 종종 사용자의 주의를 끌기 위해 과도한 애니메이션과 화려한 색상을 사용합니다. 하지만 진정한 '몰입'을 위해서는 이러한 시각적 소음을 줄이는 것이 필수적입니다.
+            </p>
+<p>
+                미니멀리즘 디자인은 단순히 요소를 제거하는 것이 아니라, 콘텐츠 자체에 집중할 수 있는 환경을 조성하는 데 목적이 있습니다. 여백(whitespace)은 비어있는 공간이 아니라 텍스트가 숨 쉴 수 있는 여유를 제공합니다.
+            </p>
+<img alt="Minimal workspace" data-alt="A serene workspace with a minimalist setup. A clean white desk holds a sleek modern laptop, a steaming cup of coffee in a ceramic mug, and a small potted green succulent. The lighting is soft and natural, streaming from an unseen window, creating a calm, focused, and intellectual atmosphere consistent with a quiet digital study. The color palette emphasizes warm whites, deep charcoal, and subtle organic greens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTaK2QodRlEdtn_P6GDj5Ti6aXwk55tIVNcI2ihsT3EA3L8fVCBgInGCeBjSzKvB9m4qe9AccxxTS-UaduWRTaJ9NRNCEYvpIC1zLhszAzvK50NkKzpnPXRG3w7acFF3cMJySSEigIBR2TK7MXNeWZpkW3EWSLUmqMKxKdRLyHn6x9ELUEQYKZywN42pRRkd-SdKwEZsVqqLUyE_bI5GO0dswIWuXGWqpxXCmOeWB9HUeMROEvcro6TCN3VwL45biP1lJ5rTGpZ6G3">
+<p>
+                타이포그래피는 이러한 디자인의 핵심입니다. 읽기 편한 줄 길이(measure)와 적절한 행간(leading)은 긴 글을 읽을 때 눈의 피로를 크게 줄여줍니다.
+            </p>
+<pre class="font-meta text-meta text-on-surface"><code>body {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.75;
+    background-color: #fcf9f8;
+}</code></pre>
+<p>
+                결국 좋은 디자인이란 사용자가 디자인을 의식하지 않고 콘텐츠에 온전히 빠져들게 만드는 조용한 안내자 역할을 해야 합니다.
+            </p>
+</article>
+<div class="h-[1px] w-full bg-outline-variant my-8"></div>
+<!-- Pagination / Next Prev -->
+<section class="flex flex-col gap-4">
+<a class="block p-4 border border-outline-variant bg-surface-container-low hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="block font-meta text-meta text-secondary mb-1">이전 글</span>
+<span class="block font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors">타이포그래피의 여백과 호흡</span>
+</a>
+<a class="block p-4 border border-outline-variant bg-surface-container-low hover:bg-surface-container transition-colors duration-200 text-right" href="#">
+<span class="block font-meta text-meta text-secondary mb-1">다음 글</span>
+<span class="block font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors">모바일 환경에서의 가독성 최적화</span>
+</a>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface-dim font-meta text-meta w-full py-12 mt-section-gap border-t border-outline-variant dark:border-on-surface-variant/20 flat no shadows flex flex-col md:flex-row justify-between items-center max-w-[760px] mx-auto px-margin-sm md:px-0 gap-4">
+<div class="text-secondary dark:text-secondary-fixed-dim">
+            © 2024 Indie Developer. All rights reserved.
+        </div>
+<div class="flex gap-4">
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">Build v1.0.4</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">RSS Feed</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">GitHub</a>
+</div>
+</footer>
+</body></html>

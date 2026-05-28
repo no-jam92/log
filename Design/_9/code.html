@@ -1,0 +1,241 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=390, initial-scale=1.0" name="viewport">
+<title>Quiet Study - Posts List</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@1,6..72,400&amp;family=Pretendard:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Hide scrollbar for horizontal scroll areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#e4e2e2",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1c1b1b",
+                        "secondary": "#5e5e5e",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-secondary-container": "#626262",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f8",
+                        "on-primary-fixed": "#002018",
+                        "secondary-container": "#e1dfdf",
+                        "tertiary": "#5d322a",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-fixed-dim": "#f7b7ac",
+                        "surface-bright": "#fcf9f8",
+                        "surface": "#fcf9f8",
+                        "primary": "#154538",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary-container": "#a3d4c2",
+                        "on-tertiary-fixed-variant": "#683a33",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container": "#f0eded",
+                        "primary-container": "#2f5d4f",
+                        "inverse-primary": "#a0d1bf",
+                        "on-surface-variant": "#404945",
+                        "primary-fixed-dim": "#a0d1bf",
+                        "outline": "#717975",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#464747",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#396758",
+                        "surface-container-low": "#f6f3f2",
+                        "outline-variant": "#c0c8c4",
+                        "inverse-surface": "#313030",
+                        "tertiary-container": "#784840",
+                        "surface-variant": "#e5e2e1",
+                        "on-tertiary-fixed": "#33110b",
+                        "on-tertiary-container": "#fbbaaf",
+                        "on-primary-fixed-variant": "#204f41",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "primary-fixed": "#bceddb",
+                        "on-primary": "#ffffff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "max-width-content": "760px",
+                        "section-gap": "64px",
+                        "margin-sm": "16px",
+                        "margin-md": "32px",
+                        "side-rail-breakpoint": "1100px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        body: ["Pretendard", "sans-serif"],
+                        meta: ["JetBrains Mono", "monospace"],
+                        "h1-mobile": ["Pretendard", "sans-serif"],
+                        h1: ["Pretendard", "sans-serif"],
+                        "slogan-italic": ["Newsreader", "serif"],
+                        "post-title": ["Pretendard", "sans-serif"],
+                        label: ["JetBrains Mono", "monospace"],
+                        h2: ["Pretendard", "sans-serif"]
+                    },
+                    fontSize: {
+                        body: ["16px", { lineHeight: "1.75", fontWeight: "400" }],
+                        meta: ["13px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "h1-mobile": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        h1: ["48px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "slogan-italic": ["20px", { fontWeight: "400" }],
+                        "post-title": ["20px", { lineHeight: "1.4", fontWeight: "600" }],
+                        label: ["12px", { lineHeight: "1", letterSpacing: "0.12em", fontWeight: "500" }],
+                        h2: ["28px", { lineHeight: "1.3", fontWeight: "700" }]
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen antialiased flex flex-col pt-16">
+<!-- TopNavBar (from Shared Components) -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant dark:border-on-surface-variant/20">
+<div class="flex justify-between items-center h-16 max-w-[760px] mx-auto px-margin-sm md:px-0">
+<a class="font-h2 text-h2 font-bold text-on-surface dark:text-on-surface" href="#">ID</a>
+<!-- Mobile BottomNavBar structure suppression - mapping to TopAppBar layout due to specific JSON instruction mapping active logic to this header context for desktop, but for mobile strictness, assuming TopNavBar layout as provided in JSON anchors. -->
+<div class="flex space-x-6">
+<a class="font-body text-body text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer active:scale-95 py-1" href="#">홈</a>
+<a class="font-body text-body text-primary dark:text-primary-fixed-dim font-bold border-b border-primary dark:border-primary-fixed-dim pb-1 hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer active:scale-95" href="#">글</a>
+<a class="font-body text-body text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer active:scale-95 py-1" href="#">소개</a>
+<div class="hidden md:flex font-body text-body text-secondary dark:text-secondary-fixed-dim py-1 opacity-50">⌘K</div>
+</div>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-grow w-full max-w-max-width-content mx-auto px-margin-sm md:px-0 mt-section-gap">
+<!-- Header Section -->
+<header class="mb-margin-md">
+<h1 class="font-h1-mobile text-h1-mobile text-on-background mb-2">글</h1>
+<p class="font-slogan-italic text-slogan-italic text-secondary italic">A collection of thoughts, studies, and notes.</p>
+</header>
+<!-- Search Bar -->
+<div class="mb-margin-sm relative">
+<input class="w-full bg-surface-container-lowest border-b border-outline-variant py-3 pl-2 pr-10 focus:outline-none focus:border-primary focus:ring-0 font-body text-body text-on-surface placeholder:text-secondary transition-colors" placeholder="검색어를 입력하세요..." type="text">
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-secondary pointer-events-none">search</span>
+</div>
+<!-- Filters Section -->
+<section class="mb-section-gap">
+<!-- Category Chips -->
+<div class="flex overflow-x-auto no-scrollbar gap-2 mb-3 pb-1 border-b border-outline-variant/30">
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-primary-container text-on-primary font-meta text-meta transition-transform hover:-translate-y-0.5 shadow-sm">All</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-low font-meta text-meta transition-transform hover:-translate-y-0.5">Design</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-low font-meta text-meta transition-transform hover:-translate-y-0.5">Development</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-low font-meta text-meta transition-transform hover:-translate-y-0.5">Life</button>
+</div>
+<!-- Tags Chips -->
+<div class="flex overflow-x-auto no-scrollbar gap-2 pb-1 items-center">
+<button class="shrink-0 px-3 py-1 rounded bg-surface-container text-on-surface-variant font-label text-label transition-transform hover:-translate-y-0.5">#typography</button>
+<button class="shrink-0 px-3 py-1 rounded bg-surface-container text-on-surface-variant font-label text-label transition-transform hover:-translate-y-0.5">#minimalism</button>
+<button class="shrink-0 px-3 py-1 rounded bg-surface-container text-on-surface-variant font-label text-label transition-transform hover:-translate-y-0.5">#css</button>
+<button class="shrink-0 px-3 py-1 rounded bg-surface-container text-on-surface-variant font-label text-label transition-transform hover:-translate-y-0.5">#architecture</button>
+<a class="shrink-0 px-3 py-1 text-primary font-label text-label hover:underline ml-2" href="#">모든 태그 →</a>
+</div>
+</section>
+<!-- Post List Content -->
+<section class="space-y-section-gap mb-section-gap">
+<!-- 2025 Group -->
+<div>
+<h2 class="font-h2 text-h2 text-on-surface border-b border-outline-variant pb-2 mb-margin-sm">2025</h2>
+<div class="flex flex-col">
+<!-- Post Item -->
+<article class="group py-margin-sm border-b border-outline-variant/50 last:border-0 cursor-pointer transition-transform hover:-translate-y-[2px]">
+<div class="flex flex-col gap-1 mb-2">
+<span class="font-meta text-meta text-secondary">May 14 · Design</span>
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors inline-block relative w-fit">
+                                The Quiet Aesthetics of Digital Spaces
+                                <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all group-hover:w-full"></span>
+</h3>
+</div>
+<p class="font-body text-body text-on-surface-variant line-clamp-2">Exploring how minimalist principles and restraint in color palettes can foster a sense of deep focus and intellectual calm in modern web applications.</p>
+</article>
+<!-- Post Item -->
+<article class="group py-margin-sm border-b border-outline-variant/50 last:border-0 cursor-pointer transition-transform hover:-translate-y-[2px]">
+<div class="flex flex-col gap-1 mb-2">
+<span class="font-meta text-meta text-secondary">Apr 02 · Development</span>
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors inline-block relative w-fit">
+                                Structuring CSS for Longevity
+                                <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all group-hover:w-full"></span>
+</h3>
+</div>
+<p class="font-body text-body text-on-surface-variant line-clamp-2">A technical deep dive into architectural patterns that keep stylesheets maintainable over years, avoiding the common pitfalls of overly complex dependency chains.</p>
+</article>
+</div>
+</div>
+<!-- 2024 Group -->
+<div>
+<h2 class="font-h2 text-h2 text-on-surface border-b border-outline-variant pb-2 mb-margin-sm">2024</h2>
+<div class="flex flex-col">
+<!-- Post Item -->
+<article class="group py-margin-sm border-b border-outline-variant/50 last:border-0 cursor-pointer transition-transform hover:-translate-y-[2px]">
+<div class="flex flex-col gap-1 mb-2">
+<span class="font-meta text-meta text-secondary">Nov 22 · Life</span>
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors inline-block relative w-fit">
+                                Notes on Slow Reading
+                                <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all group-hover:w-full"></span>
+</h3>
+</div>
+<p class="font-body text-body text-on-surface-variant line-clamp-2">Reflecting on the practice of stepping away from infinite scrolls and returning to the deliberate, contemplative pace of reading long-form physical texts.</p>
+</article>
+<!-- Post Item -->
+<article class="group py-margin-sm border-b border-outline-variant/50 last:border-0 cursor-pointer transition-transform hover:-translate-y-[2px]">
+<div class="flex flex-col gap-1 mb-2">
+<span class="font-meta text-meta text-secondary">Aug 10 · Design</span>
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors inline-block relative w-fit">
+                                Grid Systems in Editorial Layouts
+                                <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all group-hover:w-full"></span>
+</h3>
+</div>
+<p class="font-body text-body text-on-surface-variant line-clamp-2">How establishing a rigid baseline and column structure allows for elegant typographic hierarchy without the need for excessive embellishment.</p>
+</article>
+</div>
+</div>
+</section>
+<!-- Pagination -->
+<div class="flex justify-center mb-section-gap">
+<button class="px-6 py-3 border border-outline-variant text-on-surface-variant font-meta text-meta hover:bg-surface-container-low transition-colors duration-200">더 불러오기</button>
+</div>
+</main>
+<!-- Footer (from Shared Components) -->
+<footer class="w-full py-12 mt-section-gap bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-on-surface-variant/20 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-[760px] mx-auto px-margin-sm md:px-0 gap-4">
+<div class="font-label text-label uppercase tracking-widest text-on-surface-variant">
+                © 2024 Indie Developer. All rights reserved.
+            </div>
+<div class="flex gap-4">
+<a class="font-meta text-meta text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">Build v1.0.4</a>
+<a class="font-meta text-meta text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">RSS Feed</a>
+<a class="font-meta text-meta text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">GitHub</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>소개 - 홍길동</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Newsreader:ital,wght@1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#33110b",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#784840",
+                        "tertiary-fixed-dim": "#f7b7ac",
+                        "surface-variant": "#e5e2e1",
+                        "surface-dim": "#dcd9d9",
+                        "primary-container": "#2f5d4f",
+                        "inverse-on-surface": "#f3f0ef",
+                        "inverse-primary": "#a0d1bf",
+                        "outline-variant": "#c0c8c4",
+                        "on-surface": "#1c1b1b",
+                        "primary-fixed-dim": "#a0d1bf",
+                        "secondary-fixed": "#e4e2e2",
+                        "surface-container": "#f0eded",
+                        "on-tertiary-container": "#fbbaaf",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#fcf9f8",
+                        "surface-bright": "#fcf9f8",
+                        "secondary": "#5e5e5e",
+                        "outline": "#717975",
+                        "on-background": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eae7e7",
+                        "on-surface-variant": "#404945",
+                        "tertiary": "#5d322a",
+                        "on-primary-fixed": "#002018",
+                        "primary-fixed": "#bceddb",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-primary-container": "#a3d4c2",
+                        "inverse-surface": "#313030",
+                        "primary": "#154538",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#396758",
+                        "on-primary-fixed-variant": "#204f41",
+                        "on-secondary-container": "#626262",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-tertiary-fixed-variant": "#683a33",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-container-low": "#f6f3f2",
+                        "on-error-container": "#93000a",
+                        "background": "#fcf9f8",
+                        "secondary-container": "#e1dfdf",
+                        "on-secondary-fixed-variant": "#464747"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "side-rail-breakpoint": "1100px",
+                        "section-gap": "64px",
+                        "margin-sm": "16px",
+                        "margin-md": "32px",
+                        "gutter": "24px",
+                        "max-width-content": "760px"
+                    },
+                    "fontFamily": {
+                        "slogan-italic": ["newsreader", "serif"],
+                        "label": ["JetBrains Mono", "monospace"],
+                        "meta": ["JetBrains Mono", "monospace"],
+                        "body": ["Pretendard Variable", "sans-serif"],
+                        "h1": ["Pretendard Variable", "sans-serif"],
+                        "post-title": ["Pretendard Variable", "sans-serif"],
+                        "h2": ["Pretendard Variable", "sans-serif"],
+                        "h1-mobile": ["Pretendard Variable", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "slogan-italic": ["20px", { "fontWeight": "400" }],
+                        "label": ["12px", { "lineHeight": "1", "letterSpacing": "0.12em", "fontWeight": "500" }],
+                        "meta": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body": ["16px", { "lineHeight": "1.75", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "post-title": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h2": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "h1-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Pretendard Variable', sans-serif; background-color: #fcf9f8; color: #1c1b1b; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant h-16">
+<div class="flex justify-between items-center h-16 max-w-[760px] mx-auto px-margin-sm md:px-0">
+<div class="font-h2 text-h2 font-bold text-on-surface">ID</div>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-secondary hover:text-on-surface transition-colors duration-200 cursor-pointer font-body text-body active:scale-95" href="#">홈</a>
+<a class="text-secondary hover:text-on-surface transition-colors duration-200 cursor-pointer font-body text-body active:scale-95" href="#">글</a>
+<a class="text-primary font-bold border-b border-primary pb-1 cursor-pointer font-body text-body active:scale-95" href="#">소개</a>
+<div class="text-secondary cursor-pointer font-body text-body active:scale-95 flex items-center gap-1 hover:text-on-surface transition-colors duration-200">
+<span class="material-symbols-outlined text-[18px]">search</span> ⌘K
+                </div>
+</nav>
+<div class="md:hidden flex items-center">
+<span class="material-symbols-outlined text-on-surface text-[24px]">menu</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-section-gap px-margin-sm md:px-0 max-w-max-width-content mx-auto w-full">
+<!-- Header Section -->
+<section class="mb-section-gap">
+<div class="mb-8">
+<h1 class="font-h1 text-h1 text-on-surface mb-2">홍길동</h1>
+<p class="font-slogan-italic text-slogan-italic text-secondary">Crafting quiet, resilient digital experiences</p>
+</div>
+<div class="text-on-surface-variant font-body text-body max-w-2xl leading-relaxed">
+                안녕하세요. 저는 복잡함을 덜어내고 본질에 집중하는 디지털 프로덕트를 만드는 개발자이자 디자이너입니다. 사용자가 온전히 콘텐츠와 상호작용에 몰입할 수 있도록, 차분하고 단단한 UI/UX를 설계하고 구현하는 데 깊은 관심을 가지고 있습니다.
+            </div>
+</section>
+<!-- Experience Section -->
+<section class="mb-section-gap relative">
+<h2 class="font-h2 text-h2 text-on-surface mb-8 pb-4 border-b border-outline-variant">경력</h2>
+<div class="space-y-12">
+<!-- Role 1 -->
+<div class="group">
+<div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors duration-200 relative inline-block">
+                            독립 개발자 / 디자이너
+                        </h3>
+<span class="font-meta text-meta text-secondary mt-1 md:mt-0">2022.03 – 현재</span>
+</div>
+<p class="font-body text-body text-on-surface-variant">
+                        개인 스튜디오를 설립하여 미니멀리즘과 웹 접근성을 중시하는 다양한 디지털 프로덕트를 기획, 디자인 및 개발하고 있습니다. 자체 프레임워크와 디자인 시스템을 구축하여 일관된 사용자 경험을 제공합니다.
+                    </p>
+</div>
+<!-- Role 2 -->
+<div class="group">
+<div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors duration-200 relative inline-block">
+                            시니어 프론트엔드 엔지니어
+                        </h3>
+<span class="font-meta text-meta text-secondary mt-1 md:mt-0">Tech Corp, 2018.06 – 2022.02</span>
+</div>
+<p class="font-body text-body text-on-surface-variant">
+                        대규모 사내 시스템의 프론트엔드 아키텍처를 설계하고 React 기반의 SPA 전환을 주도했습니다. 성능 최적화와 공통 컴포넌트 라이브러리 구축을 통해 개발 생산성을 30% 이상 향상시켰습니다.
+                    </p>
+</div>
+<!-- Role 3 -->
+<div class="group">
+<div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary transition-colors duration-200 relative inline-block">
+                            UI/UX 디자이너
+                        </h3>
+<span class="font-meta text-meta text-secondary mt-1 md:mt-0">Creative Agency, 2015.01 – 2018.05</span>
+</div>
+<p class="font-body text-body text-on-surface-variant">
+                        다양한 클라이언트의 웹사이트 및 모바일 앱 UI/UX 디자인을 담당했습니다. 데이터 기반의 사용성 테스트를 통해 사용자 플로우를 개선하고 디자인 가이드라인을 수립했습니다.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="mb-section-gap">
+<h2 class="font-h2 text-h2 text-on-surface mb-8 pb-4 border-b border-outline-variant">프로젝트</h2>
+<div class="space-y-8">
+<!-- Project 1 -->
+<div class="p-6 bg-surface-container-lowest border border-outline-variant hover:border-outline transition-colors duration-300 transform hover:-translate-y-0.5">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+<h3 class="font-post-title text-post-title text-on-surface mb-2 md:mb-0">Minimalist Reader</h3>
+<div class="flex gap-2 flex-wrap">
+<span class="font-label text-label text-secondary bg-surface-container-high px-2 py-1 rounded-sm">TypeScript</span>
+<span class="font-label text-label text-secondary bg-surface-container-high px-2 py-1 rounded-sm">React</span>
+</div>
+</div>
+<p class="font-body text-body text-on-surface-variant">
+                        긴 글을 읽는 데 최적화된 웹 기반 리더(Reader) 애플리케이션입니다. 여백, 타이포그래피, 대비를 세밀하게 조정하여 눈의 피로를 줄이고 텍스트에 집중할 수 있는 환경을 제공합니다.
+                    </p>
+</div>
+<!-- Project 2 -->
+<div class="p-6 bg-surface-container-lowest border border-outline-variant hover:border-outline transition-colors duration-300 transform hover:-translate-y-0.5">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+<h3 class="font-post-title text-post-title text-on-surface mb-2 md:mb-0">Quiet CSS</h3>
+<div class="flex gap-2 flex-wrap">
+<span class="font-label text-label text-secondary bg-surface-container-high px-2 py-1 rounded-sm">CSS</span>
+<span class="font-label text-label text-secondary bg-surface-container-high px-2 py-1 rounded-sm">Design System</span>
+</div>
+</div>
+<p class="font-body text-body text-on-surface-variant">
+                        시각적 소음을 최소화하고 에디토리얼 디자인의 감성을 웹에 구현하기 위한 경량 CSS 프레임워크 및 디자인 시스템입니다. 복잡한 유틸리티 클래스 대신 시맨틱 마크업과 조화로운 기본 스타일을 제공합니다.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section>
+<h2 class="font-h2 text-h2 text-on-surface mb-8 pb-4 border-b border-outline-variant">기술 스택</h2>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 border border-outline-variant text-on-surface font-meta text-meta hover:bg-surface-container-low transition-colors cursor-default rounded-full">TypeScript</span>
+<span class="px-4 py-2 border border-outline-variant text-on-surface font-meta text-meta hover:bg-surface-container-low transition-colors cursor-default rounded-full">React</span>
+<span class="px-4 py-2 border border-outline-variant text-on-surface font-meta text-meta hover:bg-surface-container-low transition-colors cursor-default rounded-full">Next.js</span>
+<span class="px-4 py-2 border border-outline-variant text-on-surface font-meta text-meta hover:bg-surface-container-low transition-colors cursor-default rounded-full">Tailwind CSS</span>
+<span class="px-4 py-2 border border-outline-variant text-on-surface font-meta text-meta hover:bg-surface-container-low transition-colors cursor-default rounded-full">Figma</span>
+<span class="px-4 py-2 border border-outline-variant text-on-surface font-meta text-meta hover:bg-surface-container-low transition-colors cursor-default rounded-full">UI/UX Design</span>
+<span class="px-4 py-2 border border-outline-variant text-on-surface font-meta text-meta hover:bg-surface-container-low transition-colors cursor-default rounded-full">Web Accessibility</span>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-12 mt-section-gap border-t border-outline-variant bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-[760px] mx-auto px-margin-sm md:px-0 gap-4">
+<div class="font-label text-label uppercase tracking-widest text-on-surface-variant">
+                © 2024 Indie Developer. All rights reserved.
+            </div>
+<div class="flex gap-6">
+<a class="text-on-secondary-container hover:text-primary transition-colors opacity-80 hover:opacity-100 font-meta text-meta" href="#">Build v1.0.4</a>
+<a class="text-on-secondary-container hover:text-primary transition-colors opacity-80 hover:opacity-100 font-meta text-meta" href="#">RSS Feed</a>
+<a class="text-on-secondary-container hover:text-primary transition-colors opacity-80 hover:opacity-100 font-meta text-meta" href="#">GitHub</a>
+</div>
+</div>
+</footer>
+</body></html>

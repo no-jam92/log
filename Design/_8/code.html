@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Quiet Study - Posts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@1,6..72,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e4e2e2",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1c1b1b",
+                        "secondary": "#5e5e5e",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-secondary-container": "#626262",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f8",
+                        "on-primary-fixed": "#002018",
+                        "secondary-container": "#e1dfdf",
+                        "tertiary": "#5d322a",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-fixed-dim": "#f7b7ac",
+                        "surface-bright": "#fcf9f8",
+                        "surface": "#fcf9f8",
+                        "primary": "#154538",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary-container": "#a3d4c2",
+                        "on-tertiary-fixed-variant": "#683a33",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container": "#f0eded",
+                        "primary-container": "#2f5d4f",
+                        "inverse-primary": "#a0d1bf",
+                        "on-surface-variant": "#404945",
+                        "primary-fixed-dim": "#a0d1bf",
+                        "outline": "#717975",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#464747",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#396758",
+                        "surface-container-low": "#f6f3f2",
+                        "outline-variant": "#c0c8c4",
+                        "inverse-surface": "#313030",
+                        "tertiary-container": "#784840",
+                        "surface-variant": "#e5e2e1",
+                        "on-tertiary-fixed": "#33110b",
+                        "on-tertiary-container": "#fbbaaf",
+                        "on-primary-fixed-variant": "#204f41",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "primary-fixed": "#bceddb",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width-content": "760px",
+                        "section-gap": "64px",
+                        "margin-sm": "16px",
+                        "margin-md": "32px",
+                        "side-rail-breakpoint": "1100px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body": ["Pretendard"],
+                        "meta": ["JetBrains Mono"],
+                        "h1-mobile": ["Pretendard"],
+                        "h1": ["Pretendard"],
+                        "slogan-italic": ["Newsreader"],
+                        "post-title": ["Pretendard"],
+                        "label": ["JetBrains Mono"],
+                        "h2": ["Pretendard"]
+                    },
+                    "fontSize": {
+                        "body": ["16px", { "lineHeight": "1.75", "fontWeight": "400" }],
+                        "meta": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "slogan-italic": ["20px", { "fontWeight": "400" }],
+                        "post-title": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label": ["12px", { "lineHeight": "1", "letterSpacing": "0.12em", "fontWeight": "500" }],
+                        "h2": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e2e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c0c8c4;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body text-body min-h-screen flex flex-col antialiased selection:bg-primary-container/20 selection:text-primary">
+<!-- TopNavBar JSON Component -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant dark:border-on-surface-variant/20">
+<div class="flex justify-between items-center h-16 max-w-[760px] mx-auto px-margin-sm md:px-0">
+<a class="font-h2 text-h2 font-bold text-on-surface dark:text-on-surface" href="#">ID</a>
+<nav class="flex gap-6 items-center">
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant transition-colors duration-200 cursor-pointer active:scale-95 font-body text-body" href="#">홈</a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b border-primary dark:border-primary-fixed-dim pb-1 font-body text-body cursor-pointer active:scale-95" href="#">글</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant transition-colors duration-200 cursor-pointer active:scale-95 font-body text-body" href="#">소개</a>
+<button class="hidden md:flex items-center gap-1 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer active:scale-95 font-meta text-meta px-2 py-1 rounded border border-outline-variant/50">
+<span class="material-symbols-outlined text-[16px]" data-icon="search">search</span>
+                    ⌘K
+                </button>
+</nav>
+</div>
+</header>
+<main class="flex-grow pt-[120px] pb-32">
+<div class="max-w-max-width-content mx-auto px-margin-sm md:px-0 relative">
+<!-- Page Header -->
+<div class="mb-section-gap">
+<div class="flex items-baseline gap-4 mb-4">
+<h1 class="font-h1 text-h1 md:font-h1 md:text-h1">글</h1>
+<span class="font-meta text-meta text-secondary">· 86</span>
+</div>
+<p class="text-secondary">꾸준히 쌓아온 기록</p>
+</div>
+<!-- Sticky Search & Filter Container -->
+<div class="sticky top-[64px] z-40 bg-background/95 backdrop-blur-sm pt-4 pb-4 border-b border-outline-variant mb-12 -mx-margin-sm px-margin-sm md:mx-0 md:px-0">
+<!-- Search Input -->
+<div class="relative mb-4 group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface border border-outline-variant rounded-DEFAULT py-3 pl-10 pr-12 text-on-surface placeholder:text-secondary/70 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-shadow" placeholder="제목·태그·본문에서 검색" type="text">
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+<span class="font-meta text-meta text-secondary bg-surface-container py-0.5 px-1.5 rounded-DEFAULT border border-outline-variant/30">⌘K</span>
+</div>
+</div>
+<!-- Category Chips (Scrollable on mobile) -->
+<div class="flex overflow-x-auto hide-scrollbar gap-2 pb-2 -mb-2">
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full font-label text-label transition-colors bg-primary-container/12 text-primary-container">전체</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full font-label text-label transition-colors bg-surface-container hover:bg-surface-container-high border border-outline-variant text-secondary">개발</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full font-label text-label transition-colors bg-surface-container hover:bg-surface-container-high border border-outline-variant text-secondary">에세이</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full font-label text-label transition-colors bg-surface-container hover:bg-surface-container-high border border-outline-variant text-secondary">독서</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full font-label text-label transition-colors bg-surface-container hover:bg-surface-container-high border border-outline-variant text-secondary">메모</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full font-label text-label transition-colors bg-surface-container hover:bg-surface-container-high border border-outline-variant text-secondary">발표</button>
+</div>
+</div>
+<!-- Content Area with possible Right Sidebar -->
+<div class="relative lg:static">
+<!-- Main Posts List -->
+<div class="space-y-section-gap w-full">
+<!-- 2025 Group -->
+<section class="group">
+<header class="flex justify-between items-center cursor-pointer mb-8 group-hover:opacity-80 transition-opacity">
+<div class="flex items-baseline gap-3">
+<h2 class="font-h2 text-h2">2025</h2>
+<span class="font-meta text-meta text-secondary">· 24</span>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-300" data-icon="keyboard_arrow_up">keyboard_arrow_up</span>
+</header>
+<div class="space-y-0 overflow-hidden transition-all duration-500 origin-top">
+<!-- Post Item -->
+<article class="py-6 border-t border-outline-variant hover:-translate-y-[2px] transition-transform duration-200 group/post cursor-pointer">
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 mb-2">
+<time class="font-meta text-meta text-secondary min-w-[100px]">10월 24일</time>
+<h3 class="font-post-title text-post-title group-hover/post:text-primary transition-colors flex-grow"><span class="group-hover/post:border-b border-primary pb-[1px]">리액트 동시성 렌더링 깊게 파보기</span></h3>
+</div>
+<div class="flex gap-4 sm:pl-[124px]">
+<span class="font-label text-label text-secondary uppercase">개발</span>
+<span class="font-label text-label text-secondary uppercase">리액트</span>
+</div>
+</article>
+<!-- Post Item -->
+<article class="py-6 border-t border-outline-variant hover:-translate-y-[2px] transition-transform duration-200 group/post cursor-pointer">
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 mb-2">
+<time class="font-meta text-meta text-secondary min-w-[100px]">09월 12일</time>
+<h3 class="font-post-title text-post-title group-hover/post:text-primary transition-colors flex-grow"><span class="group-hover/post:border-b border-primary pb-[1px]">디자인 시스템을 구축하며 배운 5가지</span></h3>
+</div>
+<div class="flex gap-4 sm:pl-[124px]">
+<span class="font-label text-label text-secondary uppercase">에세이</span>
+<span class="font-label text-label text-secondary uppercase">디자인</span>
+</div>
+</article>
+<!-- Post Item -->
+<article class="py-6 border-t border-outline-variant hover:-translate-y-[2px] transition-transform duration-200 group/post cursor-pointer">
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 mb-2">
+<time class="font-meta text-meta text-secondary min-w-[100px]">08월 05일</time>
+<h3 class="font-post-title text-post-title group-hover/post:text-primary transition-colors flex-grow"><span class="group-hover/post:border-b border-primary pb-[1px]">조용한 공간이 주는 몰입의 힘</span></h3>
+</div>
+<div class="flex gap-4 sm:pl-[124px]">
+<span class="font-label text-label text-secondary uppercase">에세이</span>
+<span class="font-label text-label text-secondary uppercase">생각</span>
+</div>
+</article>
+</div>
+</section>
+<!-- 2024 Group -->
+<section class="group">
+<header class="flex justify-between items-center cursor-pointer mb-8 group-hover:opacity-80 transition-opacity">
+<div class="flex items-baseline gap-3">
+<h2 class="font-h2 text-h2">2024</h2>
+<span class="font-meta text-meta text-secondary">· 42</span>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-300" data-icon="keyboard_arrow_up">keyboard_arrow_up</span>
+</header>
+<div class="space-y-0 overflow-hidden transition-all duration-500 origin-top">
+<!-- Post Item -->
+<article class="py-6 border-t border-outline-variant hover:-translate-y-[2px] transition-transform duration-200 group/post cursor-pointer">
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 mb-2">
+<time class="font-meta text-meta text-secondary min-w-[100px]">12월 10일</time>
+<h3 class="font-post-title text-post-title group-hover/post:text-primary transition-colors flex-grow"><span class="group-hover/post:border-b border-primary pb-[1px]">타입스크립트 제네릭 완벽 가이드</span></h3>
+</div>
+<div class="flex gap-4 sm:pl-[124px]">
+<span class="font-label text-label text-secondary uppercase">개발</span>
+<span class="font-label text-label text-secondary uppercase">타입스크립트</span>
+</div>
+</article>
+<!-- Post Item -->
+<article class="py-6 border-t border-outline-variant hover:-translate-y-[2px] transition-transform duration-200 group/post cursor-pointer">
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 mb-2">
+<time class="font-meta text-meta text-secondary min-w-[100px]">11월 22일</time>
+<h3 class="font-post-title text-post-title group-hover/post:text-primary transition-colors flex-grow"><span class="group-hover/post:border-b border-primary pb-[1px]">'클린 코드' 독서 노트</span></h3>
+</div>
+<div class="flex gap-4 sm:pl-[124px]">
+<span class="font-label text-label text-secondary uppercase">독서</span>
+<span class="font-label text-label text-secondary uppercase">프로그래밍</span>
+</div>
+</article>
+</div>
+</section>
+<!-- Load More Section -->
+<div class="pt-12 pb-8 flex flex-col items-center gap-4 border-t border-outline-variant">
+<button class="px-8 py-3 border border-outline-variant rounded-DEFAULT font-label text-label text-on-surface hover:bg-surface-container-low transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-primary focus:ring-offset-2">더 불러오기</button>
+<p class="font-meta text-meta text-secondary">30개 중 30개 표시 중</p>
+</div>
+</div>
+<!-- Right Sidebar (Tags) - Sticky on Desktop > 1100px -->
+<!-- Absolute positioned relative to the main container wrapper on large screens -->
+<aside class="hidden xl:block absolute top-[160px] left-[780px] w-64 pl-8">
+<div class="sticky top-[160px]">
+<h3 class="font-label text-label text-secondary uppercase tracking-widest mb-6">태그</h3>
+<ul class="space-y-3 mb-8">
+<li><a class="group flex justify-between items-center" href="#"><span class="font-meta text-meta text-on-surface group-hover:text-primary transition-colors">리액트</span> <span class="font-meta text-meta text-secondary">24</span></a></li>
+<li><a class="group flex justify-between items-center" href="#"><span class="font-meta text-meta text-on-surface group-hover:text-primary transition-colors">타입스크립트</span> <span class="font-meta text-meta text-secondary">18</span></a></li>
+<li><a class="group flex justify-between items-center" href="#"><span class="font-meta text-meta text-on-surface group-hover:text-primary transition-colors">에세이</span> <span class="font-meta text-meta text-secondary">12</span></a></li>
+<li><a class="group flex justify-between items-center" href="#"><span class="font-meta text-meta text-on-surface group-hover:text-primary transition-colors">독서</span> <span class="font-meta text-meta text-secondary">9</span></a></li>
+<li><a class="group flex justify-between items-center" href="#"><span class="font-meta text-meta text-on-surface group-hover:text-primary transition-colors">자바스크립트</span> <span class="font-meta text-meta text-secondary">8</span></a></li>
+<li><a class="group flex justify-between items-center" href="#"><span class="font-meta text-meta text-on-surface group-hover:text-primary transition-colors">디자인</span> <span class="font-meta text-meta text-secondary">5</span></a></li>
+<li><a class="group flex justify-between items-center" href="#"><span class="font-meta text-meta text-on-surface group-hover:text-primary transition-colors">CSS</span> <span class="font-meta text-meta text-secondary">4</span></a></li>
+</ul>
+<a class="font-meta text-meta text-primary hover:underline flex items-center gap-1 group" href="#">모든 태그 <span class="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span></a>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Footer JSON Component -->
+<footer class="w-full py-12 mt-section-gap bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-on-surface-variant/20 text-secondary dark:text-secondary-fixed-dim font-meta text-meta">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-[760px] mx-auto px-margin-sm md:px-0 gap-4">
+<div class="font-label text-label uppercase tracking-widest text-on-surface-variant">© 2024 Indie Developer. All rights reserved.</div>
+<div class="flex gap-4">
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">Build v1.0.4</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">RSS Feed</a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">GitHub</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Home - Indie Developer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:ital,wght@1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e5e2e1",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#404945",
+                      "on-tertiary-fixed-variant": "#683a33",
+                      "background": "#fcf9f8",
+                      "tertiary-fixed-dim": "#f7b7ac",
+                      "tertiary": "#5d322a",
+                      "on-tertiary-container": "#fbbaaf",
+                      "primary-fixed": "#bceddb",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#e4e2e2",
+                      "surface-variant": "#e5e2e1",
+                      "error": "#ba1a1a",
+                      "surface-bright": "#fcf9f8",
+                      "on-background": "#1c1b1b",
+                      "primary-container": "#2f5d4f",
+                      "secondary-fixed-dim": "#c7c6c6",
+                      "on-secondary-fixed": "#1b1c1c",
+                      "surface-container": "#f0eded",
+                      "inverse-surface": "#313030",
+                      "on-error-container": "#93000a",
+                      "secondary-container": "#e1dfdf",
+                      "on-primary-container": "#a3d4c2",
+                      "surface": "#fcf9f8",
+                      "on-surface": "#1c1b1b",
+                      "tertiary-container": "#784840",
+                      "primary-fixed-dim": "#a0d1bf",
+                      "outline": "#717975",
+                      "primary": "#154538",
+                      "surface-container-low": "#f6f3f2",
+                      "on-primary-fixed-variant": "#204f41",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-container": "#626262",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#396758",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#33110b",
+                      "inverse-primary": "#a0d1bf",
+                      "tertiary-fixed": "#ffdad4",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#464747",
+                      "surface-dim": "#dcd9d9",
+                      "on-primary-fixed": "#002018",
+                      "secondary": "#5e5e5e",
+                      "outline-variant": "#c0c8c4",
+                      "surface-container-high": "#eae7e7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "side-rail-breakpoint": "1100px",
+                      "section-gap": "64px",
+                      "margin-md": "32px",
+                      "max-width-content": "760px",
+                      "margin-sm": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "h1": [
+                              "Pretendard", "sans-serif"
+                      ],
+                      "h1-mobile": [
+                              "Pretendard", "sans-serif"
+                      ],
+                      "h2": [
+                              "Pretendard", "sans-serif"
+                      ],
+                      "body": [
+                              "Pretendard", "sans-serif"
+                      ],
+                      "label": [
+                              "JetBrains Mono", "monospace"
+                      ],
+                      "meta": [
+                              "JetBrains Mono", "monospace"
+                      ],
+                      "post-title": [
+                              "Pretendard", "sans-serif"
+                      ],
+                      "slogan-italic": [
+                              "Newsreader", "serif"
+                      ]
+              },
+              "fontSize": {
+                      "h1": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h1-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h2": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.75",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.12em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "meta": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "post-title": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "slogan-italic": [
+                              "20px",
+                              {
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #FAFAF7;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopNavBar (Mobile BottomNavBar implementation based on logic, but preserving the TopAppBar anchor as requested for mobile if it's the main nav for editorial) -->
+<!-- Applying Shared Component JSON strictly -->
+<nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant dark:border-on-surface-variant/20">
+<div class="flex justify-between items-center h-16 max-w-[760px] mx-auto px-margin-sm md:px-0">
+<div class="font-h2 text-h2 font-bold text-on-surface dark:text-on-surface">
+                ID
+            </div>
+<ul class="flex gap-4 items-center">
+<li class="cursor-pointer transition-all active:scale-95 text-primary dark:text-primary-fixed-dim font-bold border-b border-primary dark:border-primary-fixed-dim pb-1">
+<span class="font-body text-body">홈</span>
+</li>
+<li class="cursor-pointer transition-all active:scale-95 text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200">
+<span class="font-body text-body">글</span>
+</li>
+<li class="cursor-pointer transition-all active:scale-95 text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200">
+<span class="font-body text-body">소개</span>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 px-margin-sm max-w-max-width-content mx-auto w-full pb-section-gap">
+<!-- Hero Area -->
+<section class="flex flex-col items-center text-center mt-margin-md mb-section-gap">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-6 border border-outline-variant">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A minimalist, monochromatic studio portrait of a young person with short black hair, looking thoughtfully off-camera. The lighting is soft and even, typical of high-end editorial photography. The background is a stark, clean off-white (#FAFAF7), blending seamlessly with a light mode UI. The overall mood is calm, intellectual, and refined, aligning perfectly with a quiet digital study aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2u6kMbiczuQJIcrkDcWXCGn542G-NK_wFyD-iq6sqKE-MR44m-VvakfQTNHgoTvlCS8xRWV45_cVFRvIt1c1-FWMYxfDPpKw8bXfFVlOvyAdOo3ETRrZw3rnPm44jRBNVP0TxTvR_CP-Lr5oG3kIsl6JNAJs6IdLqfRjcCxd4gvKg7Eo9wZgr-85DEBU5zBp98vIa5coOAhIIJqJr4h6H5K6COKvVWNgfJVQRdStmRcOBKK-UjpWcz-IDr4DpYeFuUHNcvI0ZKWZh">
+</div>
+<h1 class="font-h1-mobile text-h1-mobile text-on-surface mb-2">김개발</h1>
+<p class="font-slogan-italic text-slogan-italic text-secondary mb-6">Designing quiet systems in a loud world.</p>
+<div class="flex gap-4">
+<a class="text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 24px;">mail</span>
+</a>
+<a class="text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 24px;">link</span>
+</a>
+</div>
+</section>
+<!-- Categories (Horizontally Scrolling) -->
+<section class="mb-12">
+<h2 class="font-label text-label text-secondary mb-4 uppercase tracking-widest">카테고리</h2>
+<div class="flex overflow-x-auto hide-scrollbar gap-3 pb-2 -mx-margin-sm px-margin-sm">
+<button class="whitespace-nowrap px-4 py-2 bg-primary-container text-on-primary border border-primary-container font-meta text-meta rounded-DEFAULT">All</button>
+<button class="whitespace-nowrap px-4 py-2 border border-outline-variant text-secondary hover:bg-surface-container-low transition-colors font-meta text-meta rounded-DEFAULT">Architecture</button>
+<button class="whitespace-nowrap px-4 py-2 border border-outline-variant text-secondary hover:bg-surface-container-low transition-colors font-meta text-meta rounded-DEFAULT">Design Systems</button>
+<button class="whitespace-nowrap px-4 py-2 border border-outline-variant text-secondary hover:bg-surface-container-low transition-colors font-meta text-meta rounded-DEFAULT">Typography</button>
+<button class="whitespace-nowrap px-4 py-2 border border-outline-variant text-secondary hover:bg-surface-container-low transition-colors font-meta text-meta rounded-DEFAULT">Thoughts</button>
+</div>
+</section>
+<!-- Recent Posts -->
+<section>
+<div class="flex justify-between items-baseline mb-6 border-b border-outline-variant pb-2">
+<h2 class="font-label text-label text-secondary uppercase tracking-widest">최근 글</h2>
+</div>
+<div class="flex flex-col">
+<!-- Post Item -->
+<article class="py-6 border-b border-outline-variant group cursor-pointer hover:-translate-y-0.5 transition-transform duration-300">
+<div class="flex flex-col gap-2">
+<div class="flex gap-3 font-meta text-meta text-secondary">
+<span>2024.03.15</span>
+<span>•</span>
+<span>Design Systems</span>
+</div>
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary-container transition-colors duration-200 decoration-1 group-hover:underline underline-offset-4">여백의 미학: 조용한 UI를 설계하는 법</h3>
+<p class="font-body text-body text-on-surface-variant line-clamp-2 mt-2">현대 소프트웨어 디자인에서 우리는 종종 더 많은 정보를 화면에 밀어넣으려는 유혹에 빠집니다. 하지만 진정한 인지적 편안함은 채움이 아닌 비움에서 시작됩니다.</p>
+</div>
+</article>
+<!-- Post Item -->
+<article class="py-6 border-b border-outline-variant group cursor-pointer hover:-translate-y-0.5 transition-transform duration-300">
+<div class="flex flex-col gap-2">
+<div class="flex gap-3 font-meta text-meta text-secondary">
+<span>2024.02.28</span>
+<span>•</span>
+<span>Architecture</span>
+</div>
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary-container transition-colors duration-200 decoration-1 group-hover:underline underline-offset-4">프론트엔드 상태 관리의 최소주의</h3>
+<p class="font-body text-body text-on-surface-variant line-clamp-2 mt-2">복잡한 상태 관리 라이브러리 없이도 충분히 견고한 애플리케이션을 만들 수 있습니다. 로컬 상태와 서버 상태의 명확한 분리가 핵심입니다.</p>
+</div>
+</article>
+<!-- Post Item -->
+<article class="py-6 border-b border-outline-variant group cursor-pointer hover:-translate-y-0.5 transition-transform duration-300">
+<div class="flex flex-col gap-2">
+<div class="flex gap-3 font-meta text-meta text-secondary">
+<span>2024.01.10</span>
+<span>•</span>
+<span>Typography</span>
+</div>
+<h3 class="font-post-title text-post-title text-on-surface group-hover:text-primary-container transition-colors duration-200 decoration-1 group-hover:underline underline-offset-4">디지털 환경에서의 한글 타이포그래피</h3>
+<p class="font-body text-body text-on-surface-variant line-clamp-2 mt-2">가독성을 결정짓는 행간과 자간의 미세한 조정. Pretendard 폰트를 활용한 최적의 본문 조판 설정에 대하여.</p>
+</div>
+</article>
+</div>
+<div class="mt-8 text-center">
+<button class="px-6 py-2 border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors font-meta text-meta rounded-DEFAULT">모든 글 보기 →</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-on-surface-variant/20 w-full py-12 mt-section-gap">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-[760px] mx-auto px-margin-sm md:px-0 gap-4">
+<div class="font-label text-label uppercase tracking-widest text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">
+                © 2024 Indie Developer. All rights reserved.
+            </div>
+<ul class="flex gap-4">
+<li>
+<a class="font-meta text-meta text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">Build v1.0.4</a>
+</li>
+<li>
+<a class="font-meta text-meta text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">RSS Feed</a>
+</li>
+<li>
+<a class="font-meta text-meta text-on-secondary-container dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">GitHub</a>
+</li>
+</ul>
+</div>
+</footer>
+</body></html>
