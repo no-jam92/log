@@ -15,4 +15,13 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+      defaultColor: false,
+    },
+  },
 });

@@ -70,7 +70,7 @@
   margin: var(--margin-md) 0;
   padding: var(--margin-sm);
   background: var(--surface-container);
-  border: var(--border-hairline) solid var(--outline-variant);
+  border: 0;
   overflow-x: auto;
 }
 .prose pre code {
@@ -78,6 +78,31 @@
   border: 0;
   padding: 0;
   font-size: inherit;
+}
+
+/* Shiki dual-theme tokens — defaultColor:false 라서 색이 CSS 변수에만 박혀 있음.
+ * 시스템 기본은 prefers-color-scheme, 수동 토글은 :root[data-theme]로 우선. */
+.prose pre.astro-code,
+.prose pre.astro-code span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+@media (prefers-color-scheme: dark) {
+  .prose pre.astro-code,
+  .prose pre.astro-code span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+}
+:root[data-theme='light'] .prose pre.astro-code,
+:root[data-theme='light'] .prose pre.astro-code span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+:root[data-theme='dark'] .prose pre.astro-code,
+:root[data-theme='dark'] .prose pre.astro-code span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
 }
 
 .prose ul, .prose ol {
