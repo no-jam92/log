@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { site } from '../config/site';
-import { getLang, t } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../config/site';
+import { t } from '../../i18n/utils';
 
-const lang = getLang(Astro.url);
+const lang = 'en';
 const strings = t(lang);
 ---
 
@@ -16,7 +16,7 @@ const strings = t(lang);
     </header>
 
     <section class="bio">
-      <p>{site.author.bio}</p>
+      <p>I make digital experiences that pare away complexity and focus on the essence. I prefer slow reading and accumulating small records every day.</p>
     </section>
 
     <section class="skills">

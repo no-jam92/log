@@ -1,7 +1,9 @@
 ---
 import styles from './SiteHeader.module.css';
 import ThemeToggle from './ThemeToggle.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 import { site } from '../config/site';
+import { getLang, t } from '../i18n/utils';
 
 interface Props {
   /** 현재 활성 메뉴 키 — aria-current 표시에 사용 */
@@ -9,29 +11,34 @@ interface Props {
 }
 
 const { current } = Astro.props;
+const lang = getLang(Astro.url);
+const strings = t(lang);
+const homeHref = lang === 'ko' ? '/' : '/en/';
+const aboutHref = lang === 'ko' ? '/about' : '/en/about';
 ---
 
 <header class={styles.header}>
   <div class={styles.inner}>
-    <a class={styles.logo} href="/" aria-label={`${site.name} 홈`}>{site.logoMark}</a>
-    <nav class={styles.nav} aria-label="주 메뉴">
+    <a class={styles.logo} href={homeHref} aria-label={`${strings.meta.siteName} ${strings.nav.home}`}>{site.logoMark}</a>
+    <nav class={styles.nav} aria-label={strings.nav.home}>
       <a
         class={styles.navLink}
-        href="/"
+        href={homeHref}
         aria-current={current === 'home' ? 'page' : undefined}
       >
-        홈
+        {strings.nav.home}
       </a>
       <a
         class={styles.navLink}
-        href="/about"
+        href={aboutHref}
         aria-current={current === 'about' ? 'page' : undefined}
       >
-        소개
+        {strings.nav.about}
       </a>
-      <button class={styles.searchTrigger} type="button" aria-label="검색 (⌘K)">
+      <button class={styles.searchTrigger} type="button" aria-label={strings.nav.searchLabel}>
         ⌘K
       </button>
+      <LanguageSwitcher />
       <ThemeToggle />
     </nav>
   </div>

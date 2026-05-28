@@ -1,34 +1,30 @@
 ---
 import styles from './PrevNextNav.module.css';
 import type { CollectionEntry } from 'astro:content';
+import { getLang, t, postHref } from '../i18n/utils';
 
 interface Props {
-  /** 시간상 더 오래된 글 */
   prev?: CollectionEntry<'posts'>;
-  /** 시간상 더 새 글 */
   next?: CollectionEntry<'posts'>;
 }
 
 const { prev, next } = Astro.props;
-
-function postHref(p: CollectionEntry<'posts'>) {
-  const slug = p.id.replace(/^(ko|en)\//, '');
-  return p.data.lang === 'ko' ? `/posts/${slug}` : `/en/posts/${slug}`;
-}
+const lang = getLang(Astro.url);
+const strings = t(lang);
 ---
 
-<nav class={styles.nav} aria-label="이전/다음 글">
+<nav class={styles.nav} aria-label={`${strings.post.prev} / ${strings.post.next}`}>
   {prev ? (
-    <a class={styles.card} href={postHref(prev)}>
-      <span class={styles.label}>← 이전 글</span>
+    <a class={styles.card} href={postHref(prev.id, lang)}>
+      <span class={styles.label}>← {strings.post.prev}</span>
       <span class={styles.title}>{prev.data.title}</span>
     </a>
   ) : (
     <span class={styles.placeholder} aria-hidden="true"></span>
   )}
   {next ? (
-    <a class={`${styles.card} ${styles.next}`} href={postHref(next)}>
-      <span class={styles.label}>다음 글 →</span>
+    <a class={`${styles.card} ${styles.next}`} href={postHref(next.id, lang)}>
+      <span class={styles.label}>{strings.post.next} →</span>
       <span class={styles.title}>{next.data.title}</span>
     </a>
   ) : (

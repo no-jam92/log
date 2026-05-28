@@ -1,23 +1,23 @@
 ---
 import { render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProseLayout from '../../layouts/ProseLayout.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
-import PrevNextNav from '../../components/PrevNextNav.astro';
-import AuthorCard from '../../components/AuthorCard.astro';
-import TagChip from '../../components/TagChip.astro';
-import TOC from '../../components/TOC.astro';
-import { getSortedPosts } from '../../lib/posts';
-import { getLang, t } from '../../i18n/utils';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProseLayout from '../../../layouts/ProseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import PrevNextNav from '../../../components/PrevNextNav.astro';
+import AuthorCard from '../../../components/AuthorCard.astro';
+import TagChip from '../../../components/TagChip.astro';
+import TOC from '../../../components/TOC.astro';
+import { getSortedPosts } from '../../../lib/posts';
+import { t } from '../../../i18n/utils';
 
 export async function getStaticPaths() {
-  const koPosts = await getSortedPosts('ko');
-  return koPosts.map((post, i) => ({
-    params: { slug: post.id.replace(/^ko\//, '') },
+  const enPosts = await getSortedPosts('en');
+  return enPosts.map((post, i) => ({
+    params: { slug: post.id.replace(/^en\//, '') },
     props: {
       post,
-      prev: koPosts[i + 1],
-      next: koPosts[i - 1],
+      prev: enPosts[i + 1],
+      next: enPosts[i - 1],
     },
   }));
 }
@@ -26,11 +26,10 @@ const { post, prev, next } = Astro.props;
 const { Content, headings } = await render(post);
 const { title, date, category, tags, excerpt } = post.data;
 
-const lang = getLang(Astro.url);
+const lang = 'en';
 const strings = t(lang);
-const homeHref = lang === 'ko' ? '/' : '/en/';
 
-const formattedDate = new Intl.DateTimeFormat(lang === 'ko' ? 'ko-KR' : 'en-US', {
+const formattedDate = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -40,7 +39,7 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'ko' ? 'ko-KR' : 'en-US',
 <BaseLayout title={`${title} · ${strings.meta.siteName}`} description={excerpt} lang={lang}>
   <div class="layout">
     <article class="main">
-      <Breadcrumb items={[{ label: strings.post.breadcrumbRoot, href: homeHref }, { label: category }]} />
+      <Breadcrumb items={[{ label: strings.post.breadcrumbRoot, href: '/en/' }, { label: category }]} />
 
       <header class="header">
         <h1>{title}</h1>

@@ -1,10 +1,13 @@
 ---
 import styles from './AuthorCard.module.css';
 import { site } from '../config/site';
+import { getLang, t } from '../i18n/utils';
+
+const strings = t(getLang(Astro.url));
 ---
 
 <aside class={styles.card}>
-  <p class={styles.label}>WRITTEN BY</p>
+  <p class={styles.label}>{strings.post.writtenBy}</p>
   <p class={styles.name}>{site.author.name}</p>
   <p class={styles.slogan}><em>{site.author.slogan}</em></p>
   <ul class={styles.social}>

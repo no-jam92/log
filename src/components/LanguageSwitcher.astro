@@ -1,0 +1,13 @@
+---
+import styles from './LanguageSwitcher.module.css';
+import { getLang, t, toLocalizedPath, type Lang } from '../i18n/utils';
+
+const lang: Lang = getLang(Astro.url);
+const otherLang: Lang = lang === 'ko' ? 'en' : 'ko';
+const otherPath = toLocalizedPath(Astro.url.pathname, otherLang);
+const label = t(lang).langSwitch;
+---
+
+<a class={styles.switcher} href={otherPath} aria-label={`Switch language to ${otherLang.toUpperCase()}`}>
+  {label}
+</a>

@@ -2,6 +2,7 @@
 import styles from './YearGroup.module.css';
 import PostCard from './PostCard.astro';
 import type { CollectionEntry } from 'astro:content';
+import { getLang, t } from '../i18n/utils';
 
 interface Props {
   year: number;
@@ -10,12 +11,13 @@ interface Props {
 }
 
 const { year, posts, open = false } = Astro.props;
+const strings = t(getLang(Astro.url));
 ---
 
 <details class={styles.group} open={open}>
   <summary class={styles.summary}>
     <span class={styles.year}>{year}</span>
-    <span class={styles.count}>{posts.length} POSTS</span>
+    <span class={styles.count}>{posts.length} {strings.postList.postsSuffix}</span>
   </summary>
   <ul class={styles.list}>
     {posts.map((post) => (

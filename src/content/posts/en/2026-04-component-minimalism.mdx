@@ -1,0 +1,36 @@
+---
+title: The Minimalism of React Component Design
+date: 2026-04-12
+lang: en
+translationOf: ko/2026-04-component-minimalism
+category: 개발
+tags: [React, DesignSystems, Architecture]
+excerpt: A good component starts from a place where there is nothing more to remove. Abstractions should arrive only after they are needed.
+---
+
+The first virtue of a good component is being small. Small does not mean fewer lines — it means a narrower responsibility.
+
+## The Boundary of Responsibility
+
+Most complexity arises when a single component tries to do too many things at once: fetching data, holding state, laying out, styling, and handling events. Doing all of this in one place keeps the code short but extends the cost of every change.
+
+> Abstractions should arrive when users actually want them. If they arrive sooner, they become baggage.
+
+Separate by responsibility before separating by tooling.
+
+## Start Small
+
+```tsx
+function PostCard({ title, date }: { title: string; date: string }) {
+  return (
+    <article>
+      <p>{date}</p>
+      <h3>{title}</h3>
+    </article>
+  );
+}
+```
+
+This code is obviously incomplete. But the incompleteness is clear, and clear incompleteness is quick to address. A component that begins with seven options has its incompleteness scattered, and that is hard to fix later.
+
+Minimal components grow from a minimal mind. Before adding the next line, ask once more: do I really need this line?

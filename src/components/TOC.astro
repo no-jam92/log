@@ -1,5 +1,6 @@
 ---
 import styles from './TOC.module.css';
+import { getLang, t } from '../i18n/utils';
 
 export type Heading = {
   slug: string;
@@ -13,11 +14,12 @@ interface Props {
 
 const { headings } = Astro.props;
 const items = headings.filter((h) => h.depth === 2);
+const strings = t(getLang(Astro.url));
 ---
 
 {items.length > 0 && (
-  <aside class={styles.toc} aria-label="목차">
-    <p class={styles.label}>한 글의 목차</p>
+  <aside class={styles.toc} aria-label={strings.post.toc}>
+    <p class={styles.label}>{strings.post.toc}</p>
     <ul class={styles.list}>
       {items.map((h) => (
         <li>
@@ -29,9 +31,6 @@ const items = headings.filter((h) => h.depth === 2);
 )}
 
 <script>
-  /**
-   * 본문 h2 가 뷰포트에 들어오면 해당 TOC 링크에 aria-current="true" 표시.
-   */
   const links = document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]');
   if (links.length > 0) {
     const headingMap = new Map<string, HTMLAnchorElement>();
