@@ -23,6 +23,12 @@ export const ko = {
     prev: '이전 글',
     next: '다음 글',
     toc: '한 글의 목차',
+    minRead: (n: number) => `${n}분 읽기`,
+  },
+  notFound: {
+    title: '페이지를 찾을 수 없습니다',
+    message: '주소를 다시 한 번 확인해 주세요. 우리도 가끔 길을 잃습니다.',
+    cta: '홈으로 돌아가기',
   },
   about: {
     pageTitle: '소개',

@@ -5,25 +5,36 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SearchPalette from '../components/SearchPalette.astro';
 import { site } from '../config/site';
+import { getLang, t, toLocalizedPath, type Lang } from '../i18n/utils';
 
 interface Props {
   title: string;
   description?: string;
-  lang?: 'ko' | 'en';
+  lang?: Lang;
   /** SiteHeader 의 aria-current 표시용 */
   current?: 'home' | 'about';
+  /** 'article' 은 글 상세, 그 외는 'website' */
+  ogType?: 'website' | 'article';
 }
 
+const resolvedLang: Lang = Astro.props.lang ?? getLang(Astro.url);
 const {
   title,
   description = site.description,
-  lang = 'ko',
   current,
+  ogType = 'website',
 } = Astro.props;
+
+const strings = t(resolvedLang);
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const otherLang: Lang = resolvedLang === 'ko' ? 'en' : 'ko';
+const alternatePath = toLocalizedPath(Astro.url.pathname, otherLang);
+const alternateUrl = new URL(alternatePath, Astro.site ?? Astro.url).href;
+const rssHref = resolvedLang === 'ko' ? '/rss.xml' : '/en/rss.xml';
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={resolvedLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,6 +42,21 @@ const {
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang={resolvedLang} href={canonicalUrl} />
+    <link rel="alternate" hreflang={otherLang} href={alternateUrl} />
+    <link rel="alternate" type="application/rss+xml" title={strings.meta.siteName} href={rssHref} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={strings.meta.siteName} />
+    <meta property="og:locale" content={resolvedLang === 'ko' ? 'ko_KR' : 'en_US'} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
 
     {/* FOUC 방지: 본문 페인트 전에 사용자가 토글한 테마를 적용 */}
     <script is:inline>

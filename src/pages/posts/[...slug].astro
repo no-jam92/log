@@ -7,7 +7,7 @@ import PrevNextNav from '../../components/PrevNextNav.astro';
 import AuthorCard from '../../components/AuthorCard.astro';
 import TagChip from '../../components/TagChip.astro';
 import TOC from '../../components/TOC.astro';
-import { getSortedPosts } from '../../lib/posts';
+import { getSortedPosts, getReadingMinutes } from '../../lib/posts';
 import { getLang, t } from '../../i18n/utils';
 
 export async function getStaticPaths() {
@@ -25,6 +25,7 @@ export async function getStaticPaths() {
 const { post, prev, next } = Astro.props;
 const { Content, headings } = await render(post);
 const { title, date, category, tags, excerpt } = post.data;
+const readingMinutes = getReadingMinutes(post);
 
 const lang = getLang(Astro.url);
 const strings = t(lang);
@@ -37,7 +38,7 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'ko' ? 'ko-KR' : 'en-US',
 }).format(date);
 ---
 
-<BaseLayout title={`${title} · ${strings.meta.siteName}`} description={excerpt} lang={lang}>
+<BaseLayout title={`${title} · ${strings.meta.siteName}`} description={excerpt} lang={lang} ogType="article">
   <div class="layout">
     <article class="main">
       <Breadcrumb items={[{ label: strings.post.breadcrumbRoot, href: homeHref }, { label: category }]} />
@@ -46,6 +47,8 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'ko' ? 'ko-KR' : 'en-US',
         <h1>{title}</h1>
         <div class="meta">
           <time datetime={date.toISOString()}>{formattedDate}</time>
+          <span aria-hidden="true">·</span>
+          <span>{strings.post.minRead(readingMinutes)}</span>
         </div>
         <TagChip tags={tags} />
       </header>
@@ -96,6 +99,9 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'ko' ? 'ko-KR' : 'en-US',
   }
   @media (min-width: 640px) { h1 { font-size: var(--h1-size); } }
   .meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     font-family: var(--meta-family);
     font-size: var(--meta-size);
     color: var(--on-surface-variant);

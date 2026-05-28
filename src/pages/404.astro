@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { t } from '../i18n/utils';
+
+const lang = 'ko';
+const strings = t(lang);
+---
+
+<BaseLayout title={`${strings.notFound.title} · ${strings.meta.siteName}`} lang={lang}>
+  <div class="container">
+    <p class="label">404</p>
+    <h1>{strings.notFound.title}</h1>
+    <p class="message">{strings.notFound.message}</p>
+    <a class="cta" href="/">← {strings.notFound.cta}</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: var(--max-width-article);
+    margin: 0 auto;
+    padding: var(--section-gap) var(--margin-sm);
+    text-align: center;
+  }
+  .label {
+    font-family: var(--label-family);
+    font-size: var(--label-size);
+    font-weight: var(--label-weight);
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    margin-bottom: var(--space-3);
+  }
+  h1 {
+    font-family: var(--h1-family);
+    font-size: var(--h1-mobile-size);
+    font-weight: var(--h1-weight);
+    line-height: var(--h1-leading);
+    margin-bottom: var(--space-3);
+  }
+  @media (min-width: 640px) { h1 { font-size: var(--h1-size); } }
+  .message {
+    font-family: var(--slogan-italic-family);
+    font-style: italic;
+    font-size: var(--slogan-italic-size);
+    color: var(--on-surface-variant);
+    margin-bottom: var(--section-gap);
+  }
+  .cta {
+    font-family: var(--body-family);
+    font-size: var(--body-size);
+    color: var(--on-surface);
+    border-bottom: var(--border-hairline) solid var(--primary);
+    padding-bottom: 2px;
+  }
+</style>

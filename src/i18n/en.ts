@@ -23,6 +23,12 @@ export const en = {
     prev: 'Previous',
     next: 'Next',
     toc: 'In this piece',
+    minRead: (n: number) => `${n} min read`,
+  },
+  notFound: {
+    title: 'Page not found',
+    message: 'Please check the address. Even we lose our way sometimes.',
+    cta: 'Back to home',
   },
   about: {
     pageTitle: 'About',
