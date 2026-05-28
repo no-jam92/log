@@ -1,8 +1,10 @@
 ---
 import styles from './SiteFooter.module.css';
 import { site } from '../config/site';
+import { withBase } from '../i18n/utils';
 
 const year = new Date().getFullYear();
+const linkHref = (h: string) => (h.startsWith('/') ? withBase(h) : h);
 ---
 
 <footer class={styles.footer}>
@@ -10,7 +12,7 @@ const year = new Date().getFullYear();
     <p class={styles.copy}>© {year} {site.author.name}</p>
     <nav class={styles.links} aria-label="사이트 푸터">
       {site.author.social.map((s) => (
-        <a class={styles.link} href={s.href}>{s.label}</a>
+        <a class={styles.link} href={linkHref(s.href)}>{s.label}</a>
       ))}
     </nav>
     <span class={styles.build}>Build · {site.build}</span>

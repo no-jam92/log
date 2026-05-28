@@ -10,7 +10,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: ko.meta.siteName,
     description: ko.meta.siteDescription,
-    site: context.site!,
+    site: new URL(import.meta.env.BASE_URL, context.site!).href,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,

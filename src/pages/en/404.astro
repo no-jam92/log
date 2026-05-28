@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { t } from '../../i18n/utils';
+import { t, withBase } from '../../i18n/utils';
 
 const lang = 'en';
 const strings = t(lang);
+const homeHref = withBase('/en/');
 ---
 
 <BaseLayout title={`${strings.notFound.title} · ${strings.meta.siteName}`} lang={lang}>
@@ -11,7 +12,7 @@ const strings = t(lang);
     <p class="label">404</p>
     <h1>{strings.notFound.title}</h1>
     <p class="message">{strings.notFound.message}</p>
-    <a class="cta" href="/en/">← {strings.notFound.cta}</a>
+    <a class="cta" href={homeHref}>← {strings.notFound.cta}</a>
   </div>
 </BaseLayout>
 

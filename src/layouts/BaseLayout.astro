@@ -5,7 +5,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SearchPalette from '../components/SearchPalette.astro';
 import { site } from '../config/site';
-import { getLang, t, toLocalizedPath, type Lang } from '../i18n/utils';
+import { getLang, t, toLocalizedPath, withBase, type Lang } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -30,7 +30,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 const otherLang: Lang = resolvedLang === 'ko' ? 'en' : 'ko';
 const alternatePath = toLocalizedPath(Astro.url.pathname, otherLang);
 const alternateUrl = new URL(alternatePath, Astro.site ?? Astro.url).href;
-const rssHref = resolvedLang === 'ko' ? '/rss.xml' : '/en/rss.xml';
+const rssHref = resolvedLang === 'ko' ? withBase('/rss.xml') : withBase('/en/rss.xml');
+const faviconHref = withBase('/favicon.svg');
 ---
 
 <!doctype html>
@@ -40,7 +41,7 @@ const rssHref = resolvedLang === 'ko' ? '/rss.xml' : '/en/rss.xml';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={faviconHref} />
     <title>{title}</title>
 
     <link rel="canonical" href={canonicalUrl} />

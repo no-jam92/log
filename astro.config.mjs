@@ -6,7 +6,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://no-jam-log.example.com',
+  site: 'https://no-jam92.github.io',
+  base: '/log/',
   integrations: [mdx(), sitemap()],
   i18n: {
     defaultLocale: 'ko',
