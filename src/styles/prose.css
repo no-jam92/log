@@ -1,0 +1,109 @@
+/*
+ * Prose styles — MDX 본문 영역에 적용. .prose 클래스가 붙은 컨테이너 자식에 한정.
+ * 토큰 의존: tokens.css.
+ */
+
+.prose {
+  font-family: var(--body-family);
+  font-size: var(--body-size);
+  line-height: var(--body-leading);
+  color: var(--on-background);
+  max-width: var(--max-width-article);
+  margin: 0 auto;
+}
+
+.prose > * + * { margin-top: var(--space-3); }
+
+.prose h2 {
+  font-family: var(--h2-family);
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  line-height: var(--h2-leading);
+  margin-top: var(--section-gap);
+  margin-bottom: var(--space-2);
+}
+
+.prose h3 {
+  font-family: var(--post-title-family);
+  font-size: var(--post-title-size);
+  font-weight: var(--post-title-weight);
+  line-height: var(--post-title-leading);
+  margin-top: var(--margin-md);
+  margin-bottom: var(--space-2);
+}
+
+.prose p { margin: 0; }
+
+.prose a {
+  color: var(--primary);
+  border-bottom: var(--border-hairline) solid transparent;
+  transition: border-color var(--transition-base);
+}
+.prose a:hover { border-bottom-color: var(--primary); }
+
+.prose strong { font-weight: 700; }
+.prose em { font-style: italic; }
+
+.prose blockquote {
+  margin: var(--margin-md) 0;
+  padding: var(--space-2) var(--gutter);
+  border-left: 2px solid var(--primary);
+  font-family: var(--slogan-italic-family);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--on-surface-variant);
+}
+.prose blockquote p { margin: 0; }
+
+.prose code {
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+  background: var(--surface-container);
+  padding: 1px 6px;
+  border: var(--border-hairline) solid var(--outline-variant);
+}
+
+.prose pre {
+  font-family: var(--font-family-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: var(--margin-md) 0;
+  padding: var(--margin-sm);
+  background: var(--surface-container);
+  border: var(--border-hairline) solid var(--outline-variant);
+  overflow-x: auto;
+}
+.prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+.prose ul, .prose ol {
+  padding-left: var(--gutter);
+}
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li + li { margin-top: var(--space-1); }
+
+.prose img {
+  display: block;
+  margin: var(--margin-md) auto;
+  border: var(--border-hairline) solid var(--outline-variant);
+}
+
+.prose figcaption {
+  margin-top: var(--space-1);
+  text-align: center;
+  font-family: var(--meta-family);
+  font-size: var(--meta-size);
+  color: var(--on-surface-variant);
+}
+
+.prose hr {
+  margin: var(--section-gap) auto;
+  width: 60px;
+  border: 0;
+  border-top: var(--border-hairline) solid var(--outline-variant);
+}
